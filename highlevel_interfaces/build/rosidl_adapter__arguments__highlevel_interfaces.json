@@ -1,0 +1,6 @@
+{
+  "package_name": "highlevel_interfaces",
+  "non_idl_tuples": [
+    "/home/aidan/code-554/applied-robotics-w2026/highlevel_interfaces:srv/Move2d.srv"
+  ]
+}
