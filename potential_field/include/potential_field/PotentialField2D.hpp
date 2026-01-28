@@ -35,9 +35,9 @@ class PotentialField2D : public rclcpp::Node {
         std_msgs::msg::Float64MultiArray velocity_msg_;
         std_msgs::msg::Bool done_msg_;
 
-        double v_max_ = 1; //m/s
-        double k_att_ = 5; //
-        double eps_ = 0.1; //m
+        double v_max_; //m/s
+        double k_att_; //
+        double eps_; //m
 
 
 };

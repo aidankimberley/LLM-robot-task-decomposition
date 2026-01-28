@@ -7,17 +7,17 @@
 
 
 
-//TODO: FIX THE SERVICE FUNCTIONALITY
 
 using Move2d = highlevel_interfaces::srv::Move2d;
 //PUBLIC
 PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
+    //create subscriber
     subscriber_ = this->create_subscription<geometry_msgs::msg::PoseArray>(
         "/husky/platform/pose",
         5,
         std::bind(&PotentialField2D::sub_callback, this, std::placeholders::_1)
     );
-
+    //create server
     server_ = this->create_service<Move2d>("/planner/move_to",
         std::bind(&PotentialField2D::server_callback, this, std::placeholders::_1, std::placeholders::_2)
     );
@@ -25,10 +25,15 @@ PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
     // RCLCPP_INFO(this->get_logger(), "A service Client is created");
     // RCLCPP_INFO(this->get_logger(),"Waiting for service");
 
+    //create 2 publishers
     velocity_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/planner/velocity", 1);
     done_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/planner/done", 1);
     
+    //define private variables
     velocity_msg_.data.resize(2);
+    v_max_ = 1; //m/s
+    k_att_ = 5; //
+    eps_ = 0.1; //m
 }
 
 void PotentialField2D::update(){
@@ -48,14 +53,18 @@ void PotentialField2D::update(){
 
         Eigen::Vector2d x_dot_unscaled = k_att_ * difference;
         double norm = x_dot_unscaled.norm();
-        if (norm > 0.0) {
+        if (norm > v_max_ && norm>0.0){
             Eigen::Vector2d x_dot = x_dot_unscaled / norm * v_max_;
             velocity_msg_.data[0] = x_dot[0];
             velocity_msg_.data[1] = x_dot[1];
-        } else {
-            velocity_msg_.data[0] = 0.0;
-            velocity_msg_.data[1] = 0.0;
         }
+        else{
+            Eigen::Vector2d x_dot = x_dot_unscaled;
+            velocity_msg_.data[0] = x_dot[0];
+            velocity_msg_.data[1] = x_dot[1];
+        }
+        
+        
         velocity_publisher_->publish(velocity_msg_);
     }
     else{
