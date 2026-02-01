@@ -17,9 +17,22 @@ find_package(Eigen3 REQUIRED)
 add_executable(potential_field_2d
     src/potential_field_2d.cpp
     src/PotentialField2D.cpp
+    
+)
+
+add_executable(potential_field_joint
+    src/PotentialFieldJoint.cpp
+    src/potential_field_joint.cpp
 )
 
 ament_target_dependencies(potential_field_2d
+    rclcpp
+    geometry_msgs
+    std_msgs
+    highlevel_interfaces
+)
+
+ament_target_dependencies(potential_field_joint
     rclcpp
     geometry_msgs
     std_msgs
@@ -32,8 +45,14 @@ target_include_directories(potential_field_2d PUBLIC
     ${EIGEN3_INCLUDE_DIR}
 )
 
-# Install executable
-install(TARGETS potential_field_2d
+target_include_directories(potential_field_joint PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+    ${EIGEN3_INCLUDE_DIR}
+)
+
+# Install executables
+install(TARGETS potential_field_2d potential_field_joint
     DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -3,6 +3,7 @@
 #include "highlevel_interfaces/srv/move2d.hpp"
 #include "std_msgs/msg/float64_multi_array.hpp"
 #include "std_msgs/msg/bool.hpp"
+#include <Eigen/Dense>
 
 using Move2d = highlevel_interfaces::srv::Move2d;
 
@@ -26,6 +27,8 @@ class PotentialField2D : public rclcpp::Node {
         void sub_callback(const geometry_msgs::msg::PoseArray::SharedPtr msg);
         void server_callback(const std::shared_ptr<Move2d::Request> request,
                                 std::shared_ptr<Move2d::Response> response);
+        void homing_callback(const std::shared_ptr<Trigger::Request> request,
+                                std::shared_ptr<Trigger::Response> response);
 
         
         bool recieved_first_pose_ = false;
@@ -37,9 +40,23 @@ class PotentialField2D : public rclcpp::Node {
         std_msgs::msg::Float64MultiArray velocity_msg_;
         std_msgs::msg::Bool done_msg_;
 
-        double v_max_; //m/s
-        double k_att_; //
-        double eps_; //m
+        double v_max_ = 1.0; //m/s
+        double eps_ = 0.1; //m
+        
+        //ASSIGNMENT 3 PARAMS
+        double k_att_;
+
+        std::vector<double> default_joint_position_vec_;
+        Eigen::VectorXd default_joint_position_; 
+
+        std::vector<double> maximum_joint_velocity_vec_;
+        Eigen::VectorXd maximum_joint_velocity_;
+
+        double done_threshold_;
+
+        //Assigment 3 vars
+        std::vector<double> joint_positions_; //float64 array size 7
+        
 
 
 };
