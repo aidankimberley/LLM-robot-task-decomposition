@@ -15,7 +15,7 @@ PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
     //     5,
     //     std::bind(&PotentialField2D::sub_callback, this, std::placeholders::_1)
     // );
-    joint_subscriber = this->create_subscription<joint_states>(
+    joint_subscriber_ = this->create_subscription<sensor_msgs::msg::JointState>(
         "/joint_states",
         5,
         std::bind(&PotentialField2D::joint_callback, this, std::placeholders::_1)
@@ -24,20 +24,23 @@ PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
 
     //create homing server
     //create server
-    homing_server = this->create_service<Trigger>('/planner/homing',std::bind())
-    server_ = this->create_service<Move2d>("/planner/move_to",
-        std::bind(&PotentialField2D::server_callback, this, std::placeholders::_1, std::placeholders::_2)
-    );
+    //NOTE: must pass in 'this' to member functions, see bind() below
+    homing_server_ = this->create_service<Trigger>("/planner/homing", std::bind(&PotentialField2D::homing_callback, this, std::placeholders::_1, std::placeholders::_2));
+    // server_ = this->create_service<Move2d>("/planner/move_to",
+    //     std::bind(&PotentialField2D::server_callback, this, std::placeholders::_1, std::placeholders::_2)
+    // );
     // client_ = this->create_client<Move2d>("Move2d");
     // RCLCPP_INFO(this->get_logger(), "A service Client is created");
     // RCLCPP_INFO(this->get_logger(),"Waiting for service");
 
     //create 2 publishers
-    velocity_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/planner/velocity", 1);
+    joint_velocity_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/planner/joint_velocity",1);
+    //velocity_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/planner/velocity", 1);
     done_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/planner/done", 1);
     
-    // Initialize velocity message size
-    velocity_msg_.data.resize(2);
+    // Initialize velocity message size (7 joints)
+    joint_velocity_msg_.data.resize(7);
+    //velocity_msg_.data.resize(2);
     
     if (!readParameters()){
         RCLCPP_ERROR(this->get_logger(), "Failed to read parameters");
@@ -110,44 +113,54 @@ bool PotentialField2D::readParameters(){
 }
 
 void PotentialField2D::update(){
+    //compute joint vel, using potential field and then publish this vel to /planner/joint_velcity you dont have to 
+    //normalize the vel by the norm, instead, cap the vel at max joint vel.
     if (recieved_first_pose_ && recieved_first_service_call_){
-        Eigen::Vector2d target(x_target_, y_target_);
-        Eigen::Vector2d robot(x_robot_, y_robot_);
-        Eigen::Vector2d difference = target - robot;
-        double distance = difference.norm();
-        if (distance < eps_){
+        // Convert std::vector to Eigen::VectorXd for math
+        Eigen::VectorXd joint_pos = Eigen::VectorXd::Zero(joint_positions_.size());
+        for (size_t i = 0; i < joint_positions_.size(); i++){
+            joint_pos[i] = joint_positions_[i];
+        }
+        
+        Eigen::VectorXd difference = default_joint_position_ - joint_pos;
+        if (difference.lpNorm<Eigen::Infinity>() < done_threshold_){
+            //checking if any singular entry is larger than the threshold
             done_msg_.data = true;
             done_publisher_->publish(done_msg_);
         }
         else{
             done_msg_.data = false;
             done_publisher_->publish(done_msg_);
+        }            
+
+        Eigen::VectorXd x_dot_unscaled = k_att_ * difference;
+        Eigen::VectorXd x_dot = x_dot_unscaled;
+        //check if any joints are moving too fast:
+        for (int i = 0; i < (int)maximum_joint_velocity_.size(); i++){
+            if (x_dot_unscaled(i) > maximum_joint_velocity_(i)){
+                x_dot(i) = maximum_joint_velocity_(i);
+            }
+            else if (x_dot_unscaled(i) < -maximum_joint_velocity_(i)){
+                x_dot(i) = -maximum_joint_velocity_(i);
+            }
+        }
+        for (int i = 0; i < (int)x_dot.size(); i++){
+            joint_velocity_msg_.data[i] = x_dot(i);
         }
 
-        Eigen::Vector2d x_dot_unscaled = k_att_ * difference;
-        double norm = x_dot_unscaled.norm();
-        if (norm > v_max_ && norm>0.0){
-            Eigen::Vector2d x_dot = x_dot_unscaled / norm * v_max_;
-            velocity_msg_.data[0] = x_dot[0];
-            velocity_msg_.data[1] = x_dot[1];
-        }
-        else{
-            Eigen::Vector2d x_dot = x_dot_unscaled;
-            velocity_msg_.data[0] = x_dot[0];
-            velocity_msg_.data[1] = x_dot[1];
-        }
-        
-        
-        velocity_publisher_->publish(velocity_msg_);
+        joint_velocity_publisher_->publish(joint_velocity_msg_);
     }
     else{
-        velocity_msg_.data[0] = 0.0;
-        velocity_msg_.data[1] = 0.0;
-        done_msg_.data = true;
+        // Publish zero velocities when not ready
+        for (size_t i = 0; i < joint_velocity_msg_.data.size(); i++){
+            joint_velocity_msg_.data[i] = 0.0;
+        }
+        done_msg_.data = false;
         done_publisher_->publish(done_msg_);
-        velocity_publisher_->publish(velocity_msg_);
+        joint_velocity_publisher_->publish(joint_velocity_msg_);
     }
 }
+
 //PRIVATE
 void PotentialField2D::sub_callback(const geometry_msgs::msg::PoseArray::SharedPtr msg){
     x_robot_ = msg->poses[5].position.x;
@@ -155,28 +168,39 @@ void PotentialField2D::sub_callback(const geometry_msgs::msg::PoseArray::SharedP
     recieved_first_pose_ = true;
 }
 //void PotentialField2D::client_callback(const )
-void PotentialField2D::server_callback(const std::shared_ptr<Move2d::Request> request,
-    std::shared_ptr<Move2d::Response> response){
-        //TODO: FILL THIS IN
-        RCLCPP_INFO(this->get_logger(), "Recieved request: x=%f, y=%f", request->x, request->y);
-        x_target_ = request->x;
-        y_target_ = request->y;
-        recieved_first_service_call_ = true;
-        if (!recieved_first_pose_){
-            response->success = false;
-        }
-        else{
-            response->success = true;
-        }
-    }
+// void PotentialField2D::server_callback(const std::shared_ptr<Move2d::Request> request,
+//     std::shared_ptr<Move2d::Response> response){
+//         //TODO: FILL THIS IN
+//         RCLCPP_INFO(this->get_logger(), "Recieved request: x=%f, y=%f", request->x, request->y);
+//         x_target_ = request->x;
+//         y_target_ = request->y;
+//         recieved_first_service_call_ = true;
+//         if (!recieved_first_pose_){
+//             response->success = false;
+//         }
+//         else{
+//             response->success = true;
+//         }
+//     }
 void PotentialField2D::homing_callback(const std::shared_ptr<Trigger::Request> request, std::shared_ptr<Trigger::Response> response){
     RCLCPP_INFO(this->get_logger(), "Recieved Trigger Request");
-    response->success =true;
-    response->message = "Homing successful";
+    recieved_first_service_call_ = true;
+    (void)request;
+    if (!recieved_first_pose_){
+        response->success = false;
+        response->message = "Haven't recieved first pose yet!";
+    }
+    else{
+        response->success =true;
+        response->message = "Homing successful";
+    }
+
+    
 }
 
 void PotentialField2D::joint_callback(const sensor_msgs::msg::JointState::SharedPtr msg){
-    RCLCPP_INFO(this->get_logger(), "Recieved Joint State");
+    RCLCPP_DEBUG(this->get_logger(), "Recieved Joint State");
+    recieved_first_pose_ = true;
     joint_positions_ = msg->position; //float64 array
     //could hypothetically extract name, vel, pos, and effort from the msg
 }
