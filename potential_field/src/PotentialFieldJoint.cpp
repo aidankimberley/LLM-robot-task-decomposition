@@ -53,9 +53,10 @@ PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
 }
 
 bool PotentialField2D::readParameters(){
+    RCLCPP_DEBUG(this->get_logger(), "Read Parameters Called");
     double k_att_default = 5.0;
     std::vector<double> maximum_joint_velocity_default = {1.0,1.0,1.0,1.0,1.0,1.0,1.0};
-    std::vector<double> default_joint_position_default = {0.0,1.54,0.0,1.54,0.0,1.54,0.0,0.0};
+    std::vector<double> default_joint_position_default = {0.0,1.54,0.0,1.54,0.0,1.54,0.0};
     double done_threshold_default = 0.05;
 
     this->declare_parameter<double>("k_att", k_att_default);
@@ -74,16 +75,17 @@ bool PotentialField2D::readParameters(){
 
     if (!this->get_parameter("maximum_joint_velocity", maximum_joint_velocity_vec_)){
         RCLCPP_WARN(this->get_logger(), "Failed to get parameter maximum_joint_velocity, setting to default value");
-        //maximum_joint_velocity_ = maximum_joint_velocity_default;
+       // maximum_joint_velocity_ = maximum_joint_velocity_default;
     }
     else{
+        RCLCPP_INFO(this->get_logger(), "Got max joint vel reading");
         int param_size = maximum_joint_velocity_vec_.size();
         maximum_joint_velocity_ = Eigen::VectorXd::Zero(param_size);
         for (int i = 0; i < param_size; i++){
             maximum_joint_velocity_[i] = maximum_joint_velocity_vec_.at(i);
         }
         
-        RCLCPP_INFO_STREAM(this->get_logger(), "maximum_joint_velocity: " << maximum_joint_velocity_.transpose());
+        RCLCPP_INFO_STREAM(this->get_logger(), "maximum_joint_velocity (type: " << typeid(maximum_joint_velocity_).name() << "): " << maximum_joint_velocity_.transpose());
     }
 
 
@@ -155,7 +157,7 @@ void PotentialField2D::update(){
         for (size_t i = 0; i < joint_velocity_msg_.data.size(); i++){
             joint_velocity_msg_.data[i] = 0.0;
         }
-        done_msg_.data = false;
+        done_msg_.data = true;
         done_publisher_->publish(done_msg_);
         joint_velocity_publisher_->publish(joint_velocity_msg_);
     }
@@ -199,7 +201,7 @@ void PotentialField2D::homing_callback(const std::shared_ptr<Trigger::Request> r
 }
 
 void PotentialField2D::joint_callback(const sensor_msgs::msg::JointState::SharedPtr msg){
-    RCLCPP_DEBUG(this->get_logger(), "Recieved Joint State");
+    //RCLCPP_DEBUG(this->get_logger(), "Recieved Joint State");
     recieved_first_pose_ = true;
     joint_positions_ = msg->position; //float64 array
     //could hypothetically extract name, vel, pos, and effort from the msg
