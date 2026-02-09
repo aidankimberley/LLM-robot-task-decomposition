@@ -29,6 +29,7 @@ class PotentialField2D : public rclcpp::Node {
 
         rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr done_publisher_;
         rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr joint_velocity_publisher_;
+        rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr reference_joint_vel_publisher_;
         //rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr velocity_publisher_;
         //rclcpp::Client<Move2d>::SharedPtr client_;
         

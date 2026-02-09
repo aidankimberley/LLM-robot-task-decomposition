@@ -18,13 +18,17 @@ find_package(Eigen3 REQUIRED)
 # Build executable (not library)
 add_executable(potential_field_2d
     src/potential_field_2d.cpp
-    src/PotentialField2D.cpp
-    
+    src/PotentialField2D.cpp   
 )
 
 add_executable(potential_field_joint
     src/PotentialFieldJoint.cpp
     src/potential_field_joint.cpp
+)
+
+add_executable(potential_field_task
+    src/potential_field_task.cpp
+    src/PotentialFieldTask.cpp
 )
 
 ament_target_dependencies(potential_field_2d
@@ -43,6 +47,13 @@ ament_target_dependencies(potential_field_joint
     highlevel_interfaces
 )
 
+ament_target_dependencies(potential_field_task
+    rclcpp
+    geometry_msgs
+    std_msgs
+    highlevel_interfaces
+)
+
 target_include_directories(potential_field_2d PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
@@ -55,14 +66,25 @@ target_include_directories(potential_field_joint PUBLIC
     ${EIGEN3_INCLUDE_DIR}
 )
 
+target_include_directories(potential_field_task PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+    ${EIGEN3_INCLUDE_DIR}
+)
+
 # Install executables
-install(TARGETS potential_field_2d potential_field_joint
+install(TARGETS potential_field_2d potential_field_joint potential_field_task
     DESTINATION lib/${PROJECT_NAME}
 )
 
 # Install header files
 install(DIRECTORY include/
     DESTINATION include
+)
+
+# Install launch files
+install(DIRECTORY launch/
+    DESTINATION share/${PROJECT_NAME}/launch
 )
 
 if(BUILD_TESTING)

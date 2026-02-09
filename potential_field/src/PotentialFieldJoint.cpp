@@ -20,7 +20,8 @@ PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
         5,
         std::bind(&PotentialField2D::joint_callback, this, std::placeholders::_1)
     );
-
+    this->declare_parameter<std::string>("reference_joint_vel_topic", "/gen3/reference/velocity");
+    auto reference_joint_vel_topic = this->get_parameter("reference_joint_vel_topic").as_string();
 
     //create homing server
     //create server
@@ -32,7 +33,7 @@ PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
     // client_ = this->create_client<Move2d>("Move2d");
     // RCLCPP_INFO(this->get_logger(), "A service Client is created");
     // RCLCPP_INFO(this->get_logger(),"Waiting for service");
-
+    reference_joint_vel_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>(reference_joint_vel_topic, 1);
     //create 2 publishers
     joint_velocity_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/planner/joint_velocity",1);
     //velocity_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/planner/velocity", 1);
@@ -63,6 +64,7 @@ bool PotentialField2D::readParameters(){
     this->declare_parameter<std::vector<double>>("maximum_joint_velocity", maximum_joint_velocity_default);
     this->declare_parameter<std::vector<double>>("default_joint_position", default_joint_position_default);
     this->declare_parameter<double>("done_threshold", done_threshold_default);
+  
 
 
     if (!this->get_parameter("k_att", k_att_)){
@@ -117,6 +119,43 @@ bool PotentialField2D::readParameters(){
 void PotentialField2D::update(){
     //compute joint vel, using potential field and then publish this vel to /planner/joint_velcity you dont have to 
     //normalize the vel by the norm, instead, cap the vel at max joint vel.
+
+    if(recieved_first_pose_){
+        Eigen::VectorXd joint_pos = Eigen::VectorXd::Zero(joint_positions_.size());
+        for (size_t i = 0; i < joint_positions_.size(); i++){
+            joint_pos[i] = joint_positions_[i];
+        }
+        
+        Eigen::VectorXd difference = default_joint_position_ - joint_pos;
+        if (difference.lpNorm<Eigen::Infinity>() < done_threshold_){
+            //checking if any singular entry is larger than the threshold
+            done_msg_.data = true;
+            done_publisher_->publish(done_msg_);
+        }
+        else{
+            done_msg_.data = false;
+            done_publisher_->publish(done_msg_);
+        }            
+
+        Eigen::VectorXd x_dot_unscaled = k_att_ * difference;
+        Eigen::VectorXd x_dot = x_dot_unscaled;
+        //check if any joints are moving too fast:
+        for (int i = 0; i < (int)maximum_joint_velocity_.size(); i++){
+            if (x_dot_unscaled(i) > maximum_joint_velocity_(i)){
+                x_dot(i) = maximum_joint_velocity_(i);
+            }
+            else if (x_dot_unscaled(i) < -maximum_joint_velocity_(i)){
+                x_dot(i) = -maximum_joint_velocity_(i);
+            }
+        }
+        for (int i = 0; i < (int)x_dot.size(); i++){
+            joint_velocity_msg_.data[i] = x_dot(i);
+        }
+
+        reference_joint_vel_publisher_->publish(joint_velocity_msg_);
+        RCLCPP_DEBUG(this->get_logger(), "Reference joint velocity published:");
+    }
+
     if (recieved_first_pose_ && recieved_first_service_call_){
         // Convert std::vector to Eigen::VectorXd for math
         Eigen::VectorXd joint_pos = Eigen::VectorXd::Zero(joint_positions_.size());
@@ -206,8 +245,6 @@ void PotentialField2D::joint_callback(const sensor_msgs::msg::JointState::Shared
     joint_positions_ = msg->position; //float64 array
     //could hypothetically extract name, vel, pos, and effort from the msg
 }
-
-
 
 //create node
 

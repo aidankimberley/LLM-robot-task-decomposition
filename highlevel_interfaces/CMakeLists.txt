@@ -13,6 +13,7 @@ find_package(rosidl_default_generators REQUIRED) # the package that generates me
 # Generate a list of msg/srv
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/Move2d.srv"
+  "srv/Move3d.srv"
 )
 
 # Export runtime so other packages can use the types
