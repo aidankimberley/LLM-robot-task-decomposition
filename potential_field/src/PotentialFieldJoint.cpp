@@ -77,7 +77,11 @@ bool PotentialField2D::readParameters(){
 
     if (!this->get_parameter("maximum_joint_velocity", maximum_joint_velocity_vec_)){
         RCLCPP_WARN(this->get_logger(), "Failed to get parameter maximum_joint_velocity, setting to default value");
-       // maximum_joint_velocity_ = maximum_joint_velocity_default;
+        maximum_joint_velocity_vec_ = maximum_joint_velocity_default;
+        maximum_joint_velocity_ = Eigen::VectorXd::Zero(7);
+        for (int i = 0; i < 7; i++){
+            maximum_joint_velocity_[i] = maximum_joint_velocity_default.at(i);
+        }
     }
     else{
         RCLCPP_INFO(this->get_logger(), "Got max joint vel reading");
@@ -93,7 +97,11 @@ bool PotentialField2D::readParameters(){
 
     if (!this->get_parameter("default_joint_position", default_joint_position_vec_)){
         RCLCPP_WARN(this->get_logger(), "Failed to get parameter default_joint_position, setting to default value");
-        //default_joint_position_ = default_joint_position_default;
+        default_joint_position_vec_ = default_joint_position_default;
+        default_joint_position_ = Eigen::VectorXd::Zero(7);
+        for (int i = 0; i < 7; i++){
+            default_joint_position_[i] = default_joint_position_default.at(i);
+        }
     }
     else{
         int param_size2 = default_joint_position_vec_.size();
