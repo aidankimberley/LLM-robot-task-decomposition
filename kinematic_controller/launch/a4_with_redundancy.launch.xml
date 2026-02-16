@@ -22,3 +22,4 @@
     <include file="$(find-pkg-share potential_field)/launch/potential_field_task.launch.xml"/>
     <include file="$(find-pkg-share potential_field)/launch/potential_field_joint.launch.xml"/>
 </launch>
+
