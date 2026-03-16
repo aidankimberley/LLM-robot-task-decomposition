@@ -75,12 +75,14 @@ class DynamicController : public rclcpp::Node {
         Eigen::VectorXd q_ref_;
         Eigen::VectorXd q_dot_;
         Eigen::VectorXd q_dot_ref_;
+        Eigen::VectorXd q_ddot_cmd_;
 
         Eigen::VectorXd x_;
         Eigen::VectorXd x_ref_;
         Eigen::VectorXd x_dot_;
         Eigen::VectorXd x_dot_ref_;
         Eigen::Vector3d x_ddot_cmd_;
+
 
         Eigen::VectorXd v_;
         Eigen::VectorXd tau_;
@@ -89,8 +91,13 @@ class DynamicController : public rclcpp::Node {
         Eigen::MatrixXd J_position_;
         Eigen::MatrixXd J_position_pseudo_;
         Eigen::MatrixXd Lambda_;
+        Eigen::MatrixXd P_;
         Eigen::MatrixXd Eta_;
+        Eigen::VectorXd Tau_task_cmd_;
+        Eigen::VectorXd Tau_joint_cmd_;
+        Eigen::VectorXd Tau_null_;
         Eigen::VectorXd Tau_cmd_;
+
 
 
         

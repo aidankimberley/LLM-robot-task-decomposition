@@ -79,7 +79,10 @@ DynamicController::DynamicController(const std::string& name) : rclcpp::Node(nam
     pinocchio::urdf::buildModel(urdf_file_name_, model_, false);//set true to display details
     data_ = pinocchio::Data(model_);
     q_ = Eigen::VectorXd::Zero(model_.nq);
+    q_ref_ = Eigen::VectorXd::Zero(model_.nq);
     q_dot_ = Eigen::VectorXd::Zero(model_.nv);
+    q_dot_ref_ = Eigen::VectorXd::Zero(model_.nv);
+    q_ddot_cmd_ = Eigen::VectorXd::Zero(model_.nv);
     reference_homing_velocity_ = Eigen::VectorXd::Zero(model_.nv);
     jacobian_ = Eigen::MatrixXd::Zero(6, model_.nv);
     J_position_ = Eigen::MatrixXd::Zero(3, model_.nv);
@@ -88,7 +91,11 @@ DynamicController::DynamicController(const std::string& name) : rclcpp::Node(nam
     Lambda_ = Eigen::MatrixXd::Zero(model_.nv, model_.nv);
     Eta_ = Eigen::MatrixXd::Zero(model_.nv, model_.nv);
     Tau_cmd_ = Eigen::VectorXd::Zero(model_.nv);
+    Tau_task_cmd_ = Eigen::VectorXd::Zero(model_.nv);
+    Tau_joint_cmd_ = Eigen::VectorXd::Zero(model_.nv);
+    Tau_null_ = Eigen::VectorXd::Zero(model_.nv);
     M_ = Eigen::MatrixXd::Zero(model_.nv, model_.nv);
+    P_ = Eigen::MatrixXd::Zero(model_.nq, model_.nq);
     h_ = Eigen::VectorXd::Zero(model_.nv);
     x_ = Eigen::Vector3d::Zero();
     x_ref_ = Eigen::Vector3d::Zero();
@@ -101,6 +108,7 @@ DynamicController::DynamicController(const std::string& name) : rclcpp::Node(nam
 
 
 void DynamicController::calculate_joint_torque(){
+    //RCLCPP_INFO(this->get_logger(), "linear k: %f, linear d: %f", linear_k_, linear_d_);
     x_ddot_cmd_ = linear_d_ * Eigen::Matrix3d::Identity() *(x_dot_ref_ - x_dot_) + linear_k_ * Eigen::Matrix3d::Identity() * (x_ref_ - x_);
     auto HAND_ID = model_.getJointId("end-effector_link") - 1;
     
@@ -114,10 +122,22 @@ void DynamicController::calculate_joint_torque(){
     h_ = data_.nle;
     Eigen::Vector3d a_ = data_.a[HAND_ID].linear();
 
-    Lambda_ = J_position_pseudo_.transpose() * M_ * J_position_pseudo_ ; //3x7 @ 7x7 @ 7x3 = 3x3
-    //Lambda_ = (J_position_pseudo_ * M_.inverse() * J_position_.transpose()).inverse(); //7x3 @ 7x7 @ 3x7 = 
+    //Lambda_ = J_position_pseudo_.transpose() * M_ * J_position_pseudo_ ; //3x7 @ 7x7 @ 7x3 = 3x3
+    Lambda_ = (J_position_ * M_.inverse() * J_position_.transpose()).inverse(); //7x3 @ 7x7 @ 3x7 = 
     Eta_ = J_position_pseudo_.transpose() * h_ - Lambda_ * a_;
-    Tau_cmd_ = J_position_.transpose() * (Lambda_ * x_ddot_cmd_ + Eta_);
+    Tau_task_cmd_ = J_position_.transpose() * (Lambda_ * x_ddot_cmd_ + Eta_);
+
+    if (with_redundancy_){
+        q_ddot_cmd_ = joint_d_ * Eigen::MatrixXd::Identity(model_.nq, model_.nq) * (q_dot_ref_ - q_dot_) + joint_k_ * Eigen::MatrixXd::Identity(model_.nq, model_.nq) * (q_ref_ - q_);
+        Tau_joint_cmd_ = M_ * q_ddot_cmd_ + h_;
+        P_ = Eigen::MatrixXd::Identity(model_.nq, model_.nq) - J_position_.transpose()*Lambda_*J_position_ * M_.inverse();
+        Tau_null_ = P_ * Tau_joint_cmd_;
+        Tau_cmd_ = Tau_task_cmd_ + Tau_null_;
+    }
+    else{
+        Tau_cmd_ = Tau_task_cmd_;
+    }
+
     std_msgs::msg::Float64MultiArray torque_msg;
     torque_msg.data.resize(model_.nv);
     for (int i = 0; i < model_.nv; i++){
@@ -139,6 +159,7 @@ void DynamicController::set_joint_kd_callback(const SetKD::Request::SharedPtr re
     joint_k_ = req->k;
     joint_d_ = req->d;
     res->success = true;
+    RCLCPP_INFO(this->get_logger(), "Joint K: %f, Joint D: %f", joint_k_, joint_d_);
 }
 
 void DynamicController::reference_joint_position_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg){
@@ -207,10 +228,6 @@ void DynamicController::joint_state_callback(const sensor_msgs::msg::JointState:
     //Keep these publishers
     end_pose_publisher_->publish(end_pose_msg_);
     end_twist_publisher_->publish(end_twist_msg_);
-
-    // RCLCPP_DEBUG(this->get_logger(), "End effector pose: %f, %f, %f", end_pose_.position.x, end_pose_.position.y, end_pose_.position.z);
-    // RCLCPP_DEBUG(this->get_logger(), "End effector twist: %f, %f, %f", end_twist_.linear.x, end_twist_.linear.y, end_twist_.linear.z);
-    // RCLCPP_DEBUG(this->get_logger(), "End effector twist: %f, %f, %f", end_twist_.angular.x, end_twist_.angular.y, end_twist_.angular.z);
 }
 
 // void KinematicController::reference_homing_velocity_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg){

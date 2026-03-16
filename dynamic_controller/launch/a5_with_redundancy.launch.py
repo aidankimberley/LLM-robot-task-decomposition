@@ -11,6 +11,7 @@ def generate_launch_description():
         package="dynamic_controller",
         executable="dynamic_controller",
         name="dynamic_controller",
+        #arguments=["--ros-args", "--log-level", "debug"],
         parameters=[
             {"use_sim_time": True},
             {"with_redundancy": True},
