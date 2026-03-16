@@ -21,6 +21,7 @@ class PotentialFieldTask : public rclcpp::Node {
         rclcpp::Service<Move3d>::SharedPtr server_; //initialize server
         rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr done_publisher_;
         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr velocity_publisher_;
+        rclcpp::Publisher<geometry_msgs::msg::Pose>::SharedPtr ref_pose_publisher_;
         
         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
         void server_callback(const std::shared_ptr<Move3d::Request> request,
@@ -36,11 +37,14 @@ class PotentialFieldTask : public rclcpp::Node {
         double y_target_;
         double z_target_;
         geometry_msgs::msg::Twist velocity_msg_;
+        geometry_msgs::msg::Pose reference_pose_msg_;
         std_msgs::msg::Bool done_msg_;
+
 
         double v_max_; //m/s
         double k_att_; //
         double eps_; //m
+        double dt_; //s
 
 
 };

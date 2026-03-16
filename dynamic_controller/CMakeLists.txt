@@ -13,6 +13,7 @@ find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(pinocchio REQUIRED)
+find_package(highlevel_interfaces REQUIRED)
 
 # Add executable
 add_executable(dynamic_controller
@@ -21,13 +22,13 @@ add_executable(dynamic_controller
 )
 
 # Include directories
-target_include_directories(kinematic_controller PUBLIC
+target_include_directories(dynamic_controller PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
 
 # Link libraries
-target_link_libraries(kinematic_controller
+target_link_libraries(dynamic_controller
   pinocchio::pinocchio
   Eigen3::Eigen
 )
@@ -38,6 +39,7 @@ ament_target_dependencies(dynamic_controller
   geometry_msgs
   sensor_msgs
   std_msgs
+  highlevel_interfaces
 )
 
 # Install executable

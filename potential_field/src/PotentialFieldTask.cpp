@@ -13,6 +13,7 @@ using Move3d = highlevel_interfaces::srv::Move3d;
 //PUBLIC
 PotentialFieldTask::PotentialFieldTask(const std::string& name): rclcpp::Node(name){
 
+    this->declare_parameter("publish_rate", 500);
     this->declare_parameter("robot_pose_topic", "/gen3/feedback/pose");
     this->declare_parameter("target_twist_topic", "/gen3/reference/twist");
     this->declare_parameter("move_to_service", "/planner/move_to");
@@ -38,14 +39,19 @@ PotentialFieldTask::PotentialFieldTask(const std::string& name): rclcpp::Node(na
 
     //create 2 publishers
     velocity_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>(target_twist_topic, 1);
+    ref_pose_publisher_ = this->create_publisher<geometry_msgs::msg::Pose>("/gen3/reference/pose", 1);
     done_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/planner/done", 1);
     
     //define private variables
+    x_target_ = 0.5;
+    y_target_ = 0.2;
+    z_target_ = 0.5;
     eps_ = 0.1; //m
+    dt_ = 1 / (double)this->get_parameter("publish_rate").as_int();
 }
 
 void PotentialFieldTask::update(){
-    if (recieved_first_pose_ && recieved_first_service_call_){
+    if (recieved_first_pose_){ //} && recieved_first_service_call_){
         RCLCPP_DEBUG(this->get_logger(), "Target recieved, calculating potential field...");
         Eigen::Vector3d target(x_target_, y_target_, z_target_);
         Eigen::Vector3d robot(x_robot_, y_robot_, z_robot_);
@@ -62,24 +68,31 @@ void PotentialFieldTask::update(){
 
         Eigen::Vector3d x_dot_unscaled = k_att_ * difference;
         double norm = x_dot_unscaled.norm();
+        Eigen::Vector3d x_dot;
         if (norm > v_max_ && norm>0.0){
-            Eigen::Vector3d x_dot = x_dot_unscaled / norm * v_max_;
+            x_dot = x_dot_unscaled / norm * v_max_;
             velocity_msg_.linear.x = x_dot[0];
             velocity_msg_.linear.y = x_dot[1];
             velocity_msg_.linear.z = x_dot[2];
         }
         else{
-            Eigen::Vector3d x_dot = x_dot_unscaled;
+            x_dot = x_dot_unscaled;
             velocity_msg_.linear.x = x_dot[0];
             velocity_msg_.linear.y = x_dot[1];
             velocity_msg_.linear.z = x_dot[2];
         }
-        
+        Eigen::Vector3d reference_pose = robot + x_dot * dt_;
+        reference_pose_msg_.position.x = reference_pose[0];
+        reference_pose_msg_.position.y = reference_pose[1];
+        reference_pose_msg_.position.z = reference_pose[2];
+        ref_pose_publisher_->publish(reference_pose_msg_);
+
+        //MIGHT NEED TO REMOVE VEL PUBLISHER??
         velocity_publisher_->publish(velocity_msg_);
         RCLCPP_DEBUG(this->get_logger(), "Velocity published: x=%f, y=%f, z=%f", velocity_msg_.linear.x, velocity_msg_.linear.y, velocity_msg_.linear.z);
     }
     else{
-        RCLCPP_DEBUG(this->get_logger(), "No target recieved, publishing zero velocity...");
+        RCLCPP_DEBUG(this->get_logger(), "No robot pose recieved, publishing zero velocity...");
         velocity_msg_.linear.x = 0.0;
         velocity_msg_.linear.y = 0.0;
         velocity_msg_.linear.z = 0.0;
@@ -88,6 +101,7 @@ void PotentialFieldTask::update(){
         velocity_publisher_->publish(velocity_msg_);
         RCLCPP_DEBUG(this->get_logger(), "Zero velocity published");
     }
+    
 }
 //PRIVATE
 void PotentialFieldTask::sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg){

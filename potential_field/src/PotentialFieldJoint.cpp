@@ -38,9 +38,12 @@ PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
     joint_velocity_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/planner/joint_velocity",1);
     //velocity_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/planner/velocity", 1);
     done_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/planner/done", 1);
+
+    reference_joint_pose_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/gen3/reference/position", 1);
     
     // Initialize velocity message size (7 joints)
     joint_velocity_msg_.data.resize(7);
+    reference_joint_pose_.data.resize(7);
     //velocity_msg_.data.resize(2);
     
     if (!readParameters()){
@@ -65,7 +68,7 @@ bool PotentialField2D::readParameters(){
     this->declare_parameter<std::vector<double>>("default_joint_position", default_joint_position_default);
     this->declare_parameter<double>("done_threshold", done_threshold_default);
   
-
+    dt_ = 1 / 500;
 
     if (!this->get_parameter("k_att", k_att_)){
         RCLCPP_WARN(this->get_logger(), "Failed to get parameter k_att, setting to default value");
@@ -147,10 +150,13 @@ void PotentialField2D::update(){
 
         Eigen::VectorXd x_dot_unscaled = k_att_ * difference;
         Eigen::VectorXd x_dot = x_dot_unscaled;
+
+        Eigen::VectorXd q_ref = joint_pos + x_dot * dt_; 
         //check if any joints are moving too fast:
         for (int i = 0; i < (int)maximum_joint_velocity_.size(); i++){
             if (x_dot_unscaled(i) > maximum_joint_velocity_(i)){
                 x_dot(i) = maximum_joint_velocity_(i);
+                
             }
             else if (x_dot_unscaled(i) < -maximum_joint_velocity_(i)){
                 x_dot(i) = -maximum_joint_velocity_(i);
@@ -158,9 +164,12 @@ void PotentialField2D::update(){
         }
         for (int i = 0; i < (int)x_dot.size(); i++){
             joint_velocity_msg_.data[i] = x_dot(i);
+            reference_joint_pose_.data[i] = q_ref(i);
         }
-
+        
         reference_joint_vel_publisher_->publish(joint_velocity_msg_);
+        reference_joint_pose_publisher_ -> publish(reference_joint_pose_);
+
         RCLCPP_DEBUG(this->get_logger(), "Reference joint velocity published:");
     }
 

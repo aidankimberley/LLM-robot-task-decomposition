@@ -30,6 +30,7 @@ class PotentialField2D : public rclcpp::Node {
         rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr done_publisher_;
         rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr joint_velocity_publisher_;
         rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr reference_joint_vel_publisher_;
+        rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr reference_joint_pose_publisher_;
         //rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr velocity_publisher_;
         //rclcpp::Client<Move2d>::SharedPtr client_;
         
@@ -47,10 +48,12 @@ class PotentialField2D : public rclcpp::Node {
         double x_target_;
         double y_target_;
         std_msgs::msg::Float64MultiArray velocity_msg_;
+        std_msgs::msg::Float64MultiArray reference_joint_pose_;
         std_msgs::msg::Bool done_msg_;
 
         double v_max_ = 1.0; //m/s
         double eps_ = 0.1; //m
+        double dt_;
         
         //ASSIGNMENT 3 PARAMS and vars
 

@@ -7,14 +7,16 @@
 #include "geometry_msgs/msg/pose.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "std_msgs/msg/float64_multi_array.hpp"
+#include "highlevel_interfaces/srv/set_kd.hpp"
 
 using SetKD = highlevel_interfaces::srv::SetKD;
 
-class KinematicController : public rclcpp::Node {
+class DynamicController : public rclcpp::Node {
 
     public:
         //constructor
-        KinematicController(const std::string& name);
+        DynamicController(const std::string& name);
+        void calculate_joint_torque();
 
     private:
         
@@ -47,6 +49,9 @@ class KinematicController : public rclcpp::Node {
         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr end_twist_publisher_;
         //publish the command torque:
         rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr joint_torque_publisher_;
+        
+
+
         //callback functions
         void joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
         void reference_twist_callback(const geometry_msgs::msg::Twist::SharedPtr msg);
@@ -55,8 +60,16 @@ class KinematicController : public rclcpp::Node {
         void reference_pose_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
         //void reference_homing_velocity_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
 
+        double linear_k_;
+        double linear_d_;
+        double joint_k_;
+        double joint_d_;
+
         pinocchio::Model model_;
         pinocchio::Data data_;
+        Eigen::MatrixXd M_;
+        Eigen::VectorXd h_;
+        
         std::string urdf_file_name_;
         Eigen::VectorXd q_;
         Eigen::VectorXd q_ref_;
@@ -67,14 +80,23 @@ class KinematicController : public rclcpp::Node {
         Eigen::VectorXd x_ref_;
         Eigen::VectorXd x_dot_;
         Eigen::VectorXd x_dot_ref_;
-        
+        Eigen::Vector3d x_ddot_cmd_;
+
         Eigen::VectorXd v_;
         Eigen::VectorXd tau_;
         Eigen::MatrixXd jacobian_;
+        Eigen::MatrixXd jacobian_pseudo_;
+        Eigen::MatrixXd J_position_;
+        Eigen::MatrixXd J_position_pseudo_;
+        Eigen::MatrixXd Lambda_;
+        Eigen::MatrixXd Eta_;
+        Eigen::VectorXd Tau_cmd_;
+
+
         
         bool with_redundancy_;
         Eigen::VectorXd reference_homing_velocity_;
-        geometry_msgs::msg::Pose end_pose_;
-        geometry_msgs::msg::Twist end_twist_;
+        geometry_msgs::msg::Pose end_pose_msg_;
+        geometry_msgs::msg::Twist end_twist_msg_;
         std_msgs::msg::Float64MultiArray joint_vel_command_;
 };

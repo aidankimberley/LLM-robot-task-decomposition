@@ -4,7 +4,6 @@
 int main(int argc, char** argv){
     rclcpp::init(argc, argv);
     std::shared_ptr<PotentialFieldTask> node = std::make_shared<PotentialFieldTask>("potential_field_task");
-    node->declare_parameter("publish_rate", 500);
     int publish_rate = node->get_parameter("publish_rate").as_int();
     rclcpp::Logger logger = node->get_logger();
     logger.set_level(rclcpp::Logger::Level::Info);
