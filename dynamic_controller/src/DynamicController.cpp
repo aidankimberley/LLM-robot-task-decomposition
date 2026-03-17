@@ -111,22 +111,20 @@ void DynamicController::calculate_joint_torque(){
     
     pinocchio::computeAllTerms(model_, data_, q_, q_dot_);
     pinocchio::getJointJacobian(model_, data_, HAND_ID, pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED, jacobian_);
-    jacobian_pseudo_ = jacobian_.completeOrthogonalDecomposition().pseudoInverse();
     J_position_ = jacobian_.topRows(3);
-    J_position_pseudo_ = jacobian_pseudo_.leftCols(3);
-    //pinocchio::crba(model_, data_, q_);
+    J_position_pseudo_ = J_position_.completeOrthogonalDecomposition().pseudoInverse();
     M_ = data_.M;
+    M_.triangularView<Eigen::StrictlyLower>() = M_.transpose().triangularView<Eigen::StrictlyLower>();
     h_ = data_.nle;
-    Eigen::Vector3d a_ = data_.a[HAND_ID].linear();
-   
-    try{
-        Lambda_ = (J_position_ * M_.inverse() * J_position_.transpose()).inverse(); //7x3 @ 7x7 @ 3x7 = 
-    }
-    catch(const std::exception& e){
-        Lambda_ = J_position_pseudo_.transpose() * M_ * J_position_pseudo_ ;  // //3x7 @ 7x7 @ 7x3 = 3x3
-        RCLCPP_ERROR(this->get_logger(), "Error in calculating Lambda using other method: %s", e.what());
-    }
-    Eta_ = J_position_pseudo_.transpose() * h_ - Lambda_ * a_;
+
+    Eigen::MatrixXd M_inv = M_.inverse();
+    Lambda_ = (J_position_ * M_inv * J_position_.transpose()).inverse();
+    Eigen::MatrixXd J_bar_T = Lambda_ * J_position_ * M_inv;
+
+    pinocchio::forwardKinematics(model_, data_, q_, q_dot_);
+    Eigen::Vector3d Jdot_qdot = data_.a[HAND_ID].linear();
+
+    Eta_ = J_bar_T * h_ - Lambda_ * Jdot_qdot;
     Tau_task_cmd_ = J_position_.transpose() * (Lambda_ * x_ddot_cmd_ + Eta_);
 
     if (with_redundancy_){
