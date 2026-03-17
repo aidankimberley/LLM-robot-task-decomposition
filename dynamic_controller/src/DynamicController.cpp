@@ -58,10 +58,9 @@ DynamicController::DynamicController(const std::string& name) : rclcpp::Node(nam
         std::bind(&DynamicController::reference_pose_callback, this, _1));
     reference_twist_subscriber_ = this->create_subscription<geometry_msgs::msg::Twist>(reference_twist_topic,10,
         std::bind(&DynamicController::reference_twist_callback, this, _1));
-    // reference_homing_velocity_subscriber_ = this->create_subscription<std_msgs::msg::Float64MultiArray>(reference_homing_velocity_topic, 10,
-    //     std::bind(&KinematicController::reference_homing_velocity_callback, this, _1));
+    reference_homing_velocity_subscriber_ = this->create_subscription<std_msgs::msg::Float64MultiArray>(reference_homing_velocity_topic, 10,
+        std::bind(&DynamicController::reference_homing_velocity_callback, this, _1));
     
-
     end_pose_publisher_ = this->create_publisher<geometry_msgs::msg::Pose>(end_pose_topic, 10);
     end_twist_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>(end_twist_topic, 10);
     //command_position_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>(joint_velocity_command_topic, 10);
@@ -72,8 +71,6 @@ DynamicController::DynamicController(const std::string& name) : rclcpp::Node(nam
         std::placeholders::_1, std::placeholders::_2));
     set_joint_kd_service_ = this->create_service<SetKD>("/gen3/set_joint_kd", std::bind(&DynamicController::set_joint_kd_callback, this,
         std::placeholders::_1, std::placeholders::_2));
-
-    
 
     //load the model
     pinocchio::urdf::buildModel(urdf_file_name_, model_, false);//set true to display details
@@ -121,14 +118,22 @@ void DynamicController::calculate_joint_torque(){
     M_ = data_.M;
     h_ = data_.nle;
     Eigen::Vector3d a_ = data_.a[HAND_ID].linear();
-
-    //Lambda_ = J_position_pseudo_.transpose() * M_ * J_position_pseudo_ ; //3x7 @ 7x7 @ 7x3 = 3x3
-    Lambda_ = (J_position_ * M_.inverse() * J_position_.transpose()).inverse(); //7x3 @ 7x7 @ 3x7 = 
+   
+    try{
+        Lambda_ = (J_position_ * M_.inverse() * J_position_.transpose()).inverse(); //7x3 @ 7x7 @ 3x7 = 
+    }
+    catch(const std::exception& e){
+        Lambda_ = J_position_pseudo_.transpose() * M_ * J_position_pseudo_ ;  // //3x7 @ 7x7 @ 7x3 = 3x3
+        RCLCPP_ERROR(this->get_logger(), "Error in calculating Lambda using other method: %s", e.what());
+    }
     Eta_ = J_position_pseudo_.transpose() * h_ - Lambda_ * a_;
     Tau_task_cmd_ = J_position_.transpose() * (Lambda_ * x_ddot_cmd_ + Eta_);
 
     if (with_redundancy_){
-        q_ddot_cmd_ = joint_d_ * Eigen::MatrixXd::Identity(model_.nq, model_.nq) * (q_dot_ref_ - q_dot_) + joint_k_ * Eigen::MatrixXd::Identity(model_.nq, model_.nq) * (q_ref_ - q_);
+        double dt_ = 1/500.0;
+        Eigen::VectorXd q_ref_homing_ = q_ref_ + reference_homing_velocity_ *dt_ ;
+        q_ddot_cmd_ = joint_d_ * Eigen::MatrixXd::Identity(model_.nq, model_.nq) * (reference_homing_velocity_ - q_dot_) + joint_k_ * Eigen::MatrixXd::Identity(model_.nq, model_.nq) * (q_ref_homing_ - q_);
+        //q_ddot_cmd_ = joint_d_ * Eigen::MatrixXd::Identity(model_.nq, model_.nq) * (q_dot_ref_ - q_dot_) + joint_k_ * Eigen::MatrixXd::Identity(model_.nq, model_.nq) * (q_ref_ - q_);
         Tau_joint_cmd_ = M_ * q_ddot_cmd_ + h_;
         P_ = Eigen::MatrixXd::Identity(model_.nq, model_.nq) - J_position_.transpose()*Lambda_*J_position_ * M_.inverse();
         Tau_null_ = P_ * Tau_joint_cmd_;
@@ -145,8 +150,6 @@ void DynamicController::calculate_joint_torque(){
     }
     joint_torque_publisher_->publish(torque_msg);
 }
-
-
 
 void DynamicController::set_linear_kd_callback(const SetKD::Request::SharedPtr req, SetKD::Response::SharedPtr res){
     linear_k_ = req->k;
@@ -176,8 +179,6 @@ void DynamicController::reference_pose_callback(const geometry_msgs::msg::Pose::
 void DynamicController::reference_twist_callback(const geometry_msgs::msg::Twist::SharedPtr msg){
     x_dot_ref_ = Eigen::Vector3d(msg->linear.x, msg->linear.y, msg->linear.z);
 }
-
-
 
 
 void DynamicController::joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg){
@@ -230,14 +231,14 @@ void DynamicController::joint_state_callback(const sensor_msgs::msg::JointState:
     end_twist_publisher_->publish(end_twist_msg_);
 }
 
-// void KinematicController::reference_homing_velocity_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg){
-//     RCLCPP_DEBUG(this->get_logger(), "Reference homing velocity callback received");
-//     const std::vector<double>& data = msg->data;
-//     reference_homing_velocity_ = Eigen::VectorXd::Zero(data.size());
-//     for (size_t i = 0; i < data.size(); i++){
-//         reference_homing_velocity_(i) = data[i];
-//     }
-// }
+void DynamicController::reference_homing_velocity_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg){
+    RCLCPP_DEBUG(this->get_logger(), "Reference homing velocity callback received");
+    const std::vector<double>& data = msg->data;
+    reference_homing_velocity_ = Eigen::VectorXd::Zero(data.size());
+    for (size_t i = 0; i < data.size(); i++){
+        reference_homing_velocity_(i) = data[i];
+    }
+}
 
 // void DynamicController::reference_twist_callback(const geometry_msgs::msg::Twist::SharedPtr msg){
 //     RCLCPP_DEBUG(this->get_logger(), "IK callback received");

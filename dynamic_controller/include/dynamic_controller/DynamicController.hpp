@@ -39,6 +39,9 @@ class DynamicController : public rclcpp::Node {
         //subscribe to the reference pose
         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr reference_pose_subscriber_;
 
+        //subscribe to the reference homing velocity
+        rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr reference_homing_velocity_subscriber_;
+
 
         //PUBLISHERS
         //publish the command position:
@@ -58,7 +61,7 @@ class DynamicController : public rclcpp::Node {
         void reference_joint_position_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
         void reference_joint_velocity_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
         void reference_pose_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
-        //void reference_homing_velocity_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
+        void reference_homing_velocity_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
 
         double linear_k_;
         double linear_d_;
