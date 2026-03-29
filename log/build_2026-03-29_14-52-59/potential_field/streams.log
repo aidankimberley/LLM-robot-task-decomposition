@@ -1,0 +1,511 @@
+[0.012s] Invoking command in '/home/aidan/code-554/applied-robotics-w2026/build/potential_field': AMENT_PREFIX_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake /home/aidan/code-554/applied-robotics-w2026/potential_field -DCMAKE_INSTALL_PREFIX=/home/aidan/code-554/applied-robotics-w2026/install/potential_field
+[0.071s] -- The C compiler identification is GNU 13.3.0
+[0.126s] -- The CXX compiler identification is GNU 13.3.0
+[0.148s] -- Detecting C compiler ABI info
+[0.254s] -- Detecting C compiler ABI info - done
+[0.262s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.262s] -- Detecting C compile features
+[0.263s] -- Detecting C compile features - done
+[0.275s] -- Detecting CXX compiler ABI info
+[0.414s] -- Detecting CXX compiler ABI info - done
+[0.425s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.425s] -- Detecting CXX compile features
+[0.426s] -- Detecting CXX compile features - done
+[0.430s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.580s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.706s] -- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.754s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.770s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.788s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.808s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.892s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.896s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.033s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.059s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.087s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.176s] -- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[1.214s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.243s] -- Found std_srvs: 5.3.6 (/opt/ros/jazzy/share/std_srvs/cmake)
+[1.260s] -- Found highlevel_interfaces: 0.0.0 (/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake)
+[1.334s] -- Found rclcpp_action: 28.1.16 (/opt/ros/jazzy/share/rclcpp_action/cmake)
+[1.356s] -- Found ament_lint_auto: 0.17.4 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.462s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.463s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/aidan/code-554/applied-robotics-w2026/potential_field/include>
+[1.463s] -- Configured cppcheck exclude dirs and/or files: 
+[1.464s] -- Added test 'lint_cmake' to check CMake code style
+[1.465s] -- Added test 'uncrustify' to check C / C++ code style
+[1.466s] -- Configured uncrustify additional arguments: 
+[1.466s] -- Added test 'xmllint' to check XML markup files
+[1.467s] -- Configuring done (1.4s)
+[1.491s] -- Generating done (0.0s)
+[1.499s] -- Build files have been written to: /home/aidan/code-554/applied-robotics-w2026/build/potential_field
+[1.510s] Invoked command in '/home/aidan/code-554/applied-robotics-w2026/build/potential_field' returned '0': AMENT_PREFIX_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake /home/aidan/code-554/applied-robotics-w2026/potential_field -DCMAKE_INSTALL_PREFIX=/home/aidan/code-554/applied-robotics-w2026/install/potential_field
+[1.511s] Invoking command in '/home/aidan/code-554/applied-robotics-w2026/build/potential_field': AMENT_PREFIX_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/aidan/code-554/applied-robotics-w2026/build/potential_field -- -j20 -l20
+[1.577s] [  8%] Building CXX object CMakeFiles/potential_field_task.dir/src/potential_field_task.cpp.o
+[1.578s] [ 25%] Building CXX object CMakeFiles/potential_field_task.dir/src/PotentialFieldTask.cpp.o
+[1.578s] [ 25%] Building CXX object CMakeFiles/potential_field_action_server.dir/src/potential_field_action_server.cpp.o
+[1.580s] [ 33%] Building CXX object CMakeFiles/potential_field_2d.dir/src/PotentialField2D.cpp.o
+[1.580s] [ 41%] Building CXX object CMakeFiles/potential_field_action_server.dir/src/PotentialFieldActionServer.cpp.o
+[1.580s] [ 50%] Building CXX object CMakeFiles/potential_field_joint.dir/src/potential_field_joint.cpp.o
+[1.585s] [ 66%] Building CXX object CMakeFiles/potential_field_joint.dir/src/PotentialFieldJoint.cpp.o
+[1.585s] [ 66%] Building CXX object CMakeFiles/potential_field_2d.dir/src/potential_field_2d.cpp.o
+[1.945s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:26:84: warning: character constant too long for its type
+[1.946s]    26 |     reference_twist_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>('/gen3/reference/twist', 1);
+[1.946s]       |                                                                                    ^~~~~~~~~~~~~~~~~~~~~~~
+[4.846s] In file included from /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:1:
+[4.846s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:30: error: ‘geometry_msgs’ was not declared in this scope
+[4.847s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.847s]       |                              ^~~~~~~~~~~~~
+[4.847s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:54: error: template argument 1 is invalid
+[4.847s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.847s]       |                                                      ^
+[4.847s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:54: error: template argument 3 is invalid
+[4.848s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:54: error: template argument 4 is invalid
+[4.848s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:54: error: template argument 5 is invalid
+[4.849s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:57: error: expected ‘;’ at end of member declaration
+[4.849s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.849s]       |                                                         ^~~~~~~~~
+[4.849s]       |                                                                  ;
+[4.850s] In file included from /home/aidan/code-554/applied-robotics-w2026/potential_field/src/potential_field_action_server.cpp:2:
+[4.850s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:30: error: ‘geometry_msgs’ was not declared in this scope
+[4.850s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.850s]       |                              ^~~~~~~~~~~~~
+[4.850s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:54: error: template argument 1 is invalid
+[4.850s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.850s]       |                                                      ^
+[4.850s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:54: error: template argument 3 is invalid
+[4.851s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:54: error: template argument 4 is invalid
+[4.851s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:54: error: template argument 5 is invalid
+[4.851s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:57: error: expected ‘;’ at end of member declaration
+[4.851s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.851s]       |                                                         ^~~~~~~~~
+[4.851s]       |                                                                  ;
+[4.852s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:67: error: ‘pose_subscriber_’ does not name a type
+[4.852s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.852s]       |                                                                   ^~~~~~~~~~~~~~~~
+[4.854s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:67: error: ‘pose_subscriber_’ does not name a type
+[4.854s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.854s]       |                                                                   ^~~~~~~~~~~~~~~~
+[4.867s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:27: error: ‘geometry_msgs’ was not declared in this scope
+[4.867s]    29 |         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr reference_twist_publisher_;
+[4.868s]       |                           ^~~~~~~~~~~~~
+[4.868s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:52: error: template argument 1 is invalid
+[4.868s]    29 |         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr reference_twist_publisher_;
+[4.868s]       |                                                    ^
+[4.868s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:55: error: expected ‘;’ at end of member declaration
+[4.868s]    29 |         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr reference_twist_publisher_;
+[4.868s]       |                                                       ^~~~~~~~~
+[4.868s]       |                                                                ;
+[4.869s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:55: error: redeclaration of ‘int PotentialFieldActionServer::SharedPtr’
+[4.869s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:57: note: previous declaration ‘int PotentialFieldActionServer::SharedPtr’
+[4.869s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.869s]       |                                                         ^~~~~~~~~
+[4.870s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:27: error: ‘geometry_msgs’ was not declared in this scope
+[4.870s]    29 |         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr reference_twist_publisher_;
+[4.870s]       |                           ^~~~~~~~~~~~~
+[4.870s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:52: error: template argument 1 is invalid
+[4.870s]    29 |         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr reference_twist_publisher_;
+[4.870s]       |                                                    ^
+[4.870s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:55: error: expected ‘;’ at end of member declaration
+[4.870s]    29 |         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr reference_twist_publisher_;
+[4.870s]       |                                                       ^~~~~~~~~
+[4.870s]       |                                                                ;
+[4.871s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:55: error: redeclaration of ‘int PotentialFieldActionServer::SharedPtr’
+[4.871s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:28:57: note: previous declaration ‘int PotentialFieldActionServer::SharedPtr’
+[4.871s]    28 |         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber_;
+[4.871s]       |                                                         ^~~~~~~~~
+[4.876s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:65: error: ‘reference_twist_publisher_’ does not name a type
+[4.876s]    29 |         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr reference_twist_publisher_;
+[4.876s]       |                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~
+[4.878s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:29:65: error: ‘reference_twist_publisher_’ does not name a type
+[4.878s]    29 |         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr reference_twist_publisher_;
+[4.878s]       |                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~
+[4.881s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:33: error: ‘geometry_msgs’ does not name a type
+[4.881s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.881s]       |                                 ^~~~~~~~~~~~~
+[4.882s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:51: error: expected unqualified-id before ‘::’ token
+[4.882s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.883s]       |                                                   ^~
+[4.883s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:51: error: expected ‘)’ before ‘::’ token
+[4.883s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.883s]       |                          ~                        ^~
+[4.883s]       |                                                   )
+[4.884s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:48: error: expected ‘;’ at end of member declaration
+[4.884s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.884s]       |                                                ^~~
+[4.884s]       |                                                   ;
+[4.884s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:33: error: ‘geometry_msgs’ does not name a type
+[4.885s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.885s]       |                                 ^~~~~~~~~~~~~
+[4.886s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:51: error: expected unqualified-id before ‘::’ token
+[4.886s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.886s]       |                                                   ^~
+[4.886s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:51: error: expected ‘)’ before ‘::’ token
+[4.886s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.886s]       |                          ~                        ^~
+[4.887s]       |                                                   )
+[4.887s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:48: error: expected ‘;’ at end of member declaration
+[4.887s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.887s]       |                                                ^~~
+[4.888s]       |                                                   ;
+[4.888s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:53: error: ‘Pose’ in namespace ‘::’ does not name a type
+[4.888s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.888s]       |                                                     ^~~~
+[4.888s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:31:53: error: ‘Pose’ in namespace ‘::’ does not name a type
+[4.889s]    31 |         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
+[4.889s]       |                                                     ^~~~
+[4.890s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:44:9: error: ‘geometry_msgs’ does not name a type
+[4.890s]    44 |         geometry_msgs::msg::Twist velocity_msg_;
+[4.890s]       |         ^~~~~~~~~~~~~
+[4.891s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:44:9: error: ‘geometry_msgs’ does not name a type
+[4.892s]    44 |         geometry_msgs::msg::Twist velocity_msg_;
+[4.892s]       |         ^~~~~~~~~~~~~
+[4.895s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:45:9: error: ‘geometry_msgs’ does not name a type
+[4.895s]    45 |         geometry_msgs::msg::Pose default_pose_target_;
+[4.895s]       |         ^~~~~~~~~~~~~
+[4.896s] /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:45:9: error: ‘geometry_msgs’ does not name a type
+[4.896s]    45 |         geometry_msgs::msg::Pose default_pose_target_;
+[4.897s]       |         ^~~~~~~~~~~~~
+[4.917s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp: In constructor ‘PotentialFieldActionServer::PotentialFieldActionServer()’:
+[4.917s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:11:17: error: ‘homing_action_name_’ was not declared in this scope; did you mean ‘pose_command_action_name_’?
+[4.917s]    11 |                 homing_action_name_,                     // name of the action (what you see in ros2 action list)
+[4.917s]       |                 ^~~~~~~~~~~~~~~~~~~
+[4.917s]       |                 pose_command_action_name_
+[4.918s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:12:28: error: ‘ActionServer’ has not been declared
+[4.918s]    12 |                 std::bind(&ActionServer::handle_goal, this, std::placeholders::_1, std::placeholders::_2), //handle goal -> accept or reject
+[4.918s]       |                            ^~~~~~~~~~~~
+[4.918s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:13:20: error: ‘ActionServer’ has not been declared
+[4.918s]    13 |         std::bind(&ActionServer::handle_cancel, this, std::placeholders::_1),
+[4.919s]       |                    ^~~~~~~~~~~~
+[4.919s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:14:20: error: ‘ActionServer’ has not been declared
+[4.919s]    14 |         std::bind(&ActionServer::handle_accepted, this, std::placeholders::_1)
+[4.920s]       |                    ^~~~~~~~~~~~
+[4.930s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:20:5: error: ‘subscriber_’ was not declared in this scope
+[4.930s]    20 |     subscriber_ = this->create_subscription<geometry_msgs::msg::Pose>(
+[4.930s]       |     ^~~~~~~~~~~
+[4.944s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:20:45: error: ‘geometry_msgs’ was not declared in this scope
+[4.945s]    20 |     subscriber_ = this->create_subscription<geometry_msgs::msg::Pose>(
+[4.945s]       |                                             ^~~~~~~~~~~~~
+[4.945s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:20:25: error: parse error in template argument list
+[4.945s]    20 |     subscriber_ = this->create_subscription<geometry_msgs::msg::Pose>(
+[4.945s]       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4.951s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:20:70: error: no matching function for call to ‘PotentialFieldActionServer::create_subscription<<expression error> >(const char [20], int, std::_Bind_helper<false, void (PotentialFieldActionServer::*)(...), PotentialFieldActionServer*, const std::_Placeholder<1>&>::type)’
+[4.951s]    20 |     subscriber_ = this->create_subscription<geometry_msgs::msg::Pose>(
+[4.952s]       |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[4.952s]    21 |         "/gen3/feedback/pose",
+[4.952s]       |         ~~~~~~~~~~~~~~~~~~~~~~                                        
+[4.952s]    22 |         5,
+[4.953s]       |         ~~                                                            
+[4.953s]    23 |         std::bind(&PotentialFieldActionServer::sub_callback, this, std::placeholders::_1)
+[4.953s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4.953s]    24 |     );
+[4.953s]       |     ~                                                                 
+[4.953s] In file included from /opt/ros/jazzy/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28,
+[4.954s]                  from /opt/ros/jazzy/include/rclcpp/rclcpp/executors.hpp:22,
+[4.954s]                  from /opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:172,
+[4.954s]                  from /home/aidan/code-554/applied-robotics-w2026/potential_field/include/potential_field/PotentialFieldActionServer.hpp:1:
+[4.954s] /opt/ros/jazzy/include/rclcpp/rclcpp/node.hpp:221:3: note: candidate: ‘template<class MessageT, class CallbackT, class AllocatorT, class SubscriptionT, class MessageMemoryStrategyT> std::shared_ptr<ROSMessageT> rclcpp::Node::create_subscription(const std::string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr)’
+[4.954s]   221 |   create_subscription(
+[4.955s]       |   ^~~~~~~~~~~~~~~~~~~
+[4.955s] /opt/ros/jazzy/include/rclcpp/rclcpp/node.hpp:221:3: note:   template argument deduction/substitution failed:
+[4.955s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:20:70: error: template argument 1 is invalid
+[4.955s]    20 |     subscriber_ = this->create_subscription<geometry_msgs::msg::Pose>(
+[4.955s]       |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[4.955s]    21 |         "/gen3/feedback/pose",
+[4.956s]       |         ~~~~~~~~~~~~~~~~~~~~~~                                        
+[4.956s]    22 |         5,
+[4.956s]       |         ~~                                                            
+[4.956s]    23 |         std::bind(&PotentialFieldActionServer::sub_callback, this, std::placeholders::_1)
+[4.956s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4.956s]    24 |     );
+[4.957s]       |     ~                                                                 
+[4.977s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:26:5: error: ‘reference_twist_publisher_’ was not declared in this scope
+[4.977s]    26 |     reference_twist_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>('/gen3/reference/twist', 1);
+[4.977s]       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+[4.977s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:26:40: error: parse error in template argument list
+[4.978s]    26 |     reference_twist_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>('/gen3/reference/twist', 1);
+[4.978s]       |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4.978s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:26:83: error: no matching function for call to ‘PotentialFieldActionServer::create_publisher<geometry_msgs>(int, int)’
+[4.978s]    26 |     reference_twist_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>('/gen3/reference/twist', 1);
+[4.978s]       |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4.978s] /opt/ros/jazzy/include/rclcpp/rclcpp/node.hpp:197:3: note: candidate: ‘template<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const std::string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)’
+[4.978s]   197 |   create_publisher(
+[4.979s]       |   ^~~~~~~~~~~~~~~~
+[4.979s] /opt/ros/jazzy/include/rclcpp/rclcpp/node.hpp:197:3: note:   template argument deduction/substitution failed:
+[4.997s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:29:5: error: ‘default_pose_target_’ was not declared in this scope
+[4.997s]    29 |     default_pose_target_.position.x = 0.5;
+[4.997s]       |     ^~~~~~~~~~~~~~~~~~~~
+[4.998s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:32:5: error: ‘Eigen’ has not been declared
+[4.998s]    32 |     Eigen::Quaterniond quaternion_default_pose_target = Eigen::AngleAxisd(0, Eigen::Vector3d::UnitZ())
+[4.998s]       |     ^~~~~
+[5.029s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:35:42: error: ‘quaternion_default_pose_target’ was not declared in this scope
+[5.029s]    35 |     default_pose_target_.orientation.x = quaternion_default_pose_target.x();
+[5.029s]       |                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5.030s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp: At global scope:
+[5.030s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:45:6: error: ‘PotentialFieldTask’ has not been declared
+[5.030s]    45 | void PotentialFieldTask::sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg){
+[5.030s]       |      ^~~~~~~~~~~~~~~~~~
+[5.034s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:45:45: error: ‘geometry_msgs’ does not name a type
+[5.034s]    45 | void PotentialFieldTask::sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg){
+[5.035s]       |                                             ^~~~~~~~~~~~~
+[5.035s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:45:63: error: expected unqualified-id before ‘::’ token
+[5.035s]    45 | void PotentialFieldTask::sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg){
+[5.035s]       |                                                               ^~
+[5.036s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:45:63: error: expected ‘)’ before ‘::’ token
+[5.036s]    45 | void PotentialFieldTask::sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg){
+[5.036s]       |                                      ~                        ^~
+[5.036s]       |                                                               )
+[5.036s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:45:63: error: expected initializer before ‘::’ token
+[5.036s]    45 | void PotentialFieldTask::sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg){
+[5.037s]       |                                                               ^~
+[5.037s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:67:29: error: ‘ActionServer’ has not been declared
+[5.037s]    67 | rclcpp_action::GoalResponse ActionServer::handle_goal(const rclcpp_action::GoalUUID & uuid,
+[5.037s]       |                             ^~~~~~~~~~~~
+[5.043s] In file included from /opt/ros/jazzy/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:27,
+[5.043s]                  from /opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:171:
+[5.044s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp: In function ‘rclcpp_action::GoalResponse handle_goal(const rclcpp_action::GoalUUID&, std::shared_ptr<const highlevel_interfaces::action::PoseCommand_Goal_<std::allocator<void> > >)’:
+[5.044s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:70:17: error: ‘logger_’ was not declared in this scope
+[5.044s]    70 |     RCLCPP_INFO(logger_, "Received goal request for a pose command action");
+[5.044s]       |                 ^~~~~~~
+[5.044s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:70:5: error: template argument 1 is invalid
+[5.044s]    70 |     RCLCPP_INFO(logger_, "Received goal request for a pose command action");
+[5.044s]       |     ^~~~~~~~~~~
+[5.050s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:83:21: error: ‘logger_’ was not declared in this scope
+[5.051s]    83 |         RCLCPP_WARN(logger_, "Rejecting goal: Target out of bounds");
+[5.051s]       |                     ^~~~~~~
+[5.051s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:83:9: error: template argument 1 is invalid
+[5.051s]    83 |         RCLCPP_WARN(logger_, "Rejecting goal: Target out of bounds");
+[5.051s]       |         ^~~~~~~~~~~
+[5.058s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:87:21: error: ‘logger_’ was not declared in this scope
+[5.058s]    87 |         RCLCPP_INFO(logger_, "Goal accepted: Target within bounds");
+[5.059s]       |                     ^~~~~~~
+[5.059s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:87:9: error: template argument 1 is invalid
+[5.059s]    87 |         RCLCPP_INFO(logger_, "Goal accepted: Target within bounds");
+[5.059s]       |         ^~~~~~~~~~~
+[5.060s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp: At global scope:
+[5.060s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:95:31: error: ‘ActionServer’ has not been declared
+[5.060s]    95 | rclcpp_action::CancelResponse ActionServer::handle_cancel(const std::shared_ptr<PoseCommandGoalHandle> goal_handle) {
+[5.060s]       |                               ^~~~~~~~~~~~
+[5.068s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp: In function ‘rclcpp_action::CancelResponse handle_cancel(std::shared_ptr<rclcpp_action::ServerGoalHandle<highlevel_interfaces::action::PoseCommand> >)’:
+[5.068s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:97:17: error: ‘logger_’ was not declared in this scope
+[5.068s]    97 |     RCLCPP_INFO(logger_, "Received cancel request for timed rotation action");
+[5.068s]       |                 ^~~~~~~
+[5.068s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:97:5: error: template argument 1 is invalid
+[5.069s]    97 |     RCLCPP_INFO(logger_, "Received cancel request for timed rotation action");
+[5.069s]       |     ^~~~~~~~~~~
+[5.069s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp: At global scope:
+[5.070s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:115:6: error: ‘ActionServer’ has not been declared
+[5.070s]   115 | void ActionServer::handle_accepted(const std::shared_ptr<PoseCommandGoalHandle> goal_handle) {
+[5.070s]       |      ^~~~~~~~~~~~
+[5.075s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp: In function ‘void handle_accepted(std::shared_ptr<rclcpp_action::ServerGoalHandle<highlevel_interfaces::action::PoseCommand> >)’:
+[5.076s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:117:21: error: ‘logger_’ was not declared in this scope
+[5.076s]   117 |         RCLCPP_INFO(logger_, "handle_accepted");
+[5.076s]       |                     ^~~~~~~
+[5.076s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:117:9: error: template argument 1 is invalid
+[5.076s]   117 |         RCLCPP_INFO(logger_, "handle_accepted");
+[5.077s]       |         ^~~~~~~~~~~
+[5.084s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:125:20: error: ‘ActionServer’ was not declared in this scope
+[5.084s]   125 |         std::bind(&ActionServer::execute_action, this, std::placeholders::_1), goal_handle
+[5.084s]       |                    ^~~~~~~~~~~~
+[5.084s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:125:50: error: invalid use of ‘this’ in non-member function
+[5.084s]   125 |         std::bind(&ActionServer::execute_action, this, std::placeholders::_1), goal_handle
+[5.084s]       |                                                  ^~~~
+[5.085s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:126:5: error: no matching function for call to ‘std::thread::thread(<brace-enclosed initializer list>)’
+[5.085s]   126 |     }.detach();
+[5.085s]       |     ^
+[5.085s] In file included from /usr/include/c++/13/future:51,
+[5.086s]                  from /opt/ros/jazzy/include/rclcpp/rclcpp/executors.hpp:18:
+[5.086s] /usr/include/c++/13/bits/std_thread.h:154:7: note: candidate: ‘template<class _Callable, class ... _Args, class> std::thread::thread(_Callable&&, _Args&& ...)’
+[5.086s]   154 |       thread(_Callable&& __f, _Args&&... __args)
+[5.086s]       |       ^~~~~~
+[5.086s] /usr/include/c++/13/bits/std_thread.h:154:7: note:   template argument deduction/substitution failed:
+[5.086s] /usr/include/c++/13/bits/std_thread.h:178:5: note: candidate: ‘std::thread::thread(std::thread&&)’
+[5.086s]   178 |     thread(thread&& __t) noexcept
+[5.087s]       |     ^~~~~~
+[5.093s] /usr/include/c++/13/bits/std_thread.h:178:5: note:   candidate expects 1 argument, 2 provided
+[5.093s] /usr/include/c++/13/bits/std_thread.h:132:5: note: candidate: ‘std::thread::thread()’
+[5.093s]   132 |     thread() noexcept = default;
+[5.093s]       |     ^~~~~~
+[5.093s] /usr/include/c++/13/bits/std_thread.h:132:5: note:   candidate expects 0 arguments, 2 provided
+[5.093s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp: At global scope:
+[5.093s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:131:6: error: ‘ActionServer’ has not been declared
+[5.093s]   131 | void ActionServer::execute_action(const std::shared_ptr<PoseCommandGoalHandle> goal_handle) {
+[5.093s]       |      ^~~~~~~~~~~~
+[5.093s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp: In function ‘void execute_action(std::shared_ptr<rclcpp_action::ServerGoalHandle<highlevel_interfaces::action::PoseCommand> >)’:
+[5.094s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:133:31: error: invalid use of ‘this’ in non-member function
+[5.094s]   133 |     rclcpp::Time start_time = this->now();
+[5.094s]       |                               ^~~~
+[5.103s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:135:21: error: ‘logger_’ was not declared in this scope
+[5.103s]   135 |         RCLCPP_INFO(logger_, "execute_action");
+[5.103s]       |                     ^~~~~~~
+[5.103s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:135:9: error: template argument 1 is invalid
+[5.103s]   135 |         RCLCPP_INFO(logger_, "execute_action");
+[5.103s]       |         ^~~~~~~~~~~
+[5.114s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:137:5: error: ‘x_target_’ was not declared in this scope
+[5.114s]   137 |     x_target_ = goal->x;
+[5.114s]       |     ^~~~~~~~~
+[5.124s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:138:5: error: ‘y_target_’ was not declared in this scope
+[5.124s]   138 |     y_target_ = goal->y;
+[5.124s]       |     ^~~~~~~~~
+[5.132s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:139:5: error: ‘z_target_’ was not declared in this scope
+[5.133s]   139 |     z_target_ = goal->z;
+[5.133s]       |     ^~~~~~~~~
+[5.146s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:140:5: error: ‘pitch_target_’ was not declared in this scope
+[5.146s]   140 |     pitch_target_ = goal->pitch;
+[5.147s]       |     ^~~~~~~~~~~~~
+[5.158s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:141:5: error: ‘roll_target_’ was not declared in this scope
+[5.158s]   141 |     roll_target_ = goal->roll;
+[5.159s]       |     ^~~~~~~~~~~~
+[5.171s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:142:5: error: ‘yaw_target_’ was not declared in this scope
+[5.171s]   142 |     yaw_target_ = goal->yaw;
+[5.171s]       |     ^~~~~~~~~~~
+[5.171s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:143:5: error: ‘Eigen’ has not been declared
+[5.172s]   143 |     Eigen::Vector3d x_goal_trans = Eigen::Vector3d(x_target_, y_target_, z_target_);
+[5.172s]       |     ^~~~~
+[5.172s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:144:5: error: ‘Eigen’ has not been declared
+[5.173s]   144 |     Eigen::Vector3d x_goal_orientation = Eigen::Vector3d(pitch_target_, roll_target_, yaw_target_);
+[5.173s]       |     ^~~~~
+[5.180s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:146:17: error: ‘True’ was not declared in this scope
+[5.180s]   146 |         while ( True ) {
+[5.181s]       |                 ^~~~
+[5.181s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:152:34: error: invalid use of ‘this’ in non-member function
+[5.181s]   152 |         rclcpp::Time curr_time = this->now();
+[5.181s]       |                                  ^~~~
+[5.197s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:154:9: error: ‘pose_command_feedback_’ was not declared in this scope
+[5.197s]   154 |         pose_command_feedback_ -> time_elapsed = duration;
+[5.198s]       |         ^~~~~~~~~~~~~~~~~~~~~~
+[5.198s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:156:26: error: invalid use of ‘this’ in non-member function
+[5.199s]   156 |             RCLCPP_ERROR(this->get_logger(), "Action timed out");
+[5.199s]       |                          ^~~~
+[5.199s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:156:26: error: invalid use of ‘this’ in non-member function
+[5.200s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:156:13: error: template argument 1 is invalid
+[5.200s]   156 |             RCLCPP_ERROR(this->get_logger(), "Action timed out");
+[5.200s]       |             ^~~~~~~~~~~~
+[5.200s] In file included from /opt/ros/jazzy/include/rclcpp/rclcpp/logging.hpp:24:
+[5.200s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:156:26: error: invalid use of ‘this’ in non-member function
+[5.200s]   156 |             RCLCPP_ERROR(this->get_logger(), "Action timed out");
+[5.201s]       |                          ^~~~
+[5.201s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:156:26: error: invalid use of ‘this’ in non-member function
+[5.201s]   156 |             RCLCPP_ERROR(this->get_logger(), "Action timed out");
+[5.201s]       |                          ^~~~
+[5.214s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:157:13: error: ‘pose_command_response_’ was not declared in this scope
+[5.214s]   157 |             pose_command_response_ -> success = false;//abort
+[5.215s]       |             ^~~~~~~~~~~~~~~~~~~~~~
+[5.215s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:163:9: error: ‘Eigen’ has not been declared
+[5.215s]   163 |         Eigen::Vector3d x_robot = Eigen::Vector3d(x_robot_, y_robot_, z_robot_);
+[5.216s]       |         ^~~~~
+[5.216s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:164:9: error: ‘Eigen’ has not been declared
+[5.216s]   164 |         Eigen::Vector3d x_robot_orientation = Eigen::Vector3d(pitch_robot_, roll_robot_, yaw_robot_);
+[5.217s]       |         ^~~~~
+[5.223s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:165:29: error: ‘x_goal_trans’ was not declared in this scope
+[5.223s]   165 |         double trans_err = (x_goal_trans - x_robot).norm();
+[5.223s]       |                             ^~~~~~~~~~~~
+[5.230s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:165:44: error: ‘x_robot’ was not declared in this scope
+[5.231s]   165 |         double trans_err = (x_goal_trans - x_robot).norm();
+[5.231s]       |                                            ^~~~~~~
+[5.238s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:169:9: error: ‘dot_prod’ was not declared in this scope
+[5.238s]   169 |         dot_prod = x_goal_orientation.dot(x_robot_orientation);
+[5.238s]       |         ^~~~~~~~
+[5.250s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:169:20: error: ‘x_goal_orientation’ was not declared in this scope
+[5.250s]   169 |         dot_prod = x_goal_orientation.dot(x_robot_orientation);
+[5.250s]       |                    ^~~~~~~~~~~~~~~~~~
+[5.264s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:169:43: error: ‘x_robot_orientation’ was not declared in this scope
+[5.264s]   169 |         dot_prod = x_goal_orientation.dot(x_robot_orientation);
+[5.264s]       |                                           ^~~~~~~~~~~~~~~~~~~
+[5.273s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:170:9: error: ‘dot_prod_norm’ was not declared in this scope
+[5.273s]   170 |         dot_prod_norm = dot_prod.norm();
+[5.273s]       |         ^~~~~~~~~~~~~
+[5.280s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:171:9: error: ‘angle’ was not declared in this scope
+[5.280s]   171 |         angle = acos(dot_prod/dot_prod_norm);
+[5.280s]       |         ^~~~~
+[5.281s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:178:25: error: invalid use of ‘this’ in non-member function
+[5.281s]   178 |             RCLCPP_INFO(this->get_logger(), "Action done");
+[5.282s]       |                         ^~~~
+[5.283s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:178:25: error: invalid use of ‘this’ in non-member function
+[5.283s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:178:13: error: template argument 1 is invalid
+[5.283s]   178 |             RCLCPP_INFO(this->get_logger(), "Action done");
+[5.283s]       |             ^~~~~~~~~~~
+[5.283s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:178:25: error: invalid use of ‘this’ in non-member function
+[5.284s]   178 |             RCLCPP_INFO(this->get_logger(), "Action done");
+[5.284s]       |                         ^~~~
+[5.284s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:178:25: error: invalid use of ‘this’ in non-member function
+[5.284s]   178 |             RCLCPP_INFO(this->get_logger(), "Action done");
+[5.284s]       |                         ^~~~
+[5.295s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:179:13: error: ‘pose_command_response_’ was not declared in this scope
+[5.295s]   179 |             pose_command_response_ -> success = true;
+[5.295s]       |             ^~~~~~~~~~~~~~~~~~~~~~
+[5.308s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:185:13: error: ‘recieved_first_pose_’ was not declared in this scope
+[5.308s]   185 |         if (recieved_first_pose_){ //} && recieved_first_service_call_){
+[5.309s]       |             ^~~~~~~~~~~~~~~~~~~~
+[5.309s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:186:26: error: invalid use of ‘this’ in non-member function
+[5.309s]   186 |             RCLCPP_DEBUG(this->get_logger(), "Target recieved, calculating potential field...");
+[5.310s]       |                          ^~~~
+[5.310s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:186:26: error: invalid use of ‘this’ in non-member function
+[5.310s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:186:13: error: template argument 1 is invalid
+[5.310s]   186 |             RCLCPP_DEBUG(this->get_logger(), "Target recieved, calculating potential field...");
+[5.310s]       |             ^~~~~~~~~~~~
+[5.311s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:186:26: error: invalid use of ‘this’ in non-member function
+[5.311s]   186 |             RCLCPP_DEBUG(this->get_logger(), "Target recieved, calculating potential field...");
+[5.311s]       |                          ^~~~
+[5.311s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:186:26: error: invalid use of ‘this’ in non-member function
+[5.311s]   186 |             RCLCPP_DEBUG(this->get_logger(), "Target recieved, calculating potential field...");
+[5.311s]       |                          ^~~~
+[5.311s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:187:13: error: ‘Eigen’ has not been declared
+[5.312s]   187 |             Eigen::VectorXd target(x_target_, y_target_, z_target_, pitch_target_, roll_target_, yaw_target_);
+[5.312s]       |             ^~~~~
+[5.312s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:188:13: error: ‘Eigen’ has not been declared
+[5.312s]   188 |             Eigen::VectorXd robot(x_robot_, y_robot_, z_robot_, pitch_robot_, roll_robot_, yaw_robot_);
+[5.312s]       |             ^~~~~
+[5.312s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:189:13: error: ‘Eigen’ has not been declared
+[5.312s]   189 |             Eigen::VectorXd difference = target - robot;
+[5.313s]       |             ^~~~~
+[5.313s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:190:13: error: ‘Eigen’ has not been declared
+[5.313s]   190 |             Eigen::VectorXd x_dot = k_att_ * difference;
+[5.313s]       |             ^~~~~
+[5.317s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:192:13: error: ‘velocity_msg_’ was not declared in this scope
+[5.318s]   192 |             velocity_msg_.linear.x = x_dot[0];
+[5.318s]       |             ^~~~~~~~~~~~~
+[5.324s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:192:38: error: ‘x_dot’ was not declared in this scope
+[5.324s]   192 |             velocity_msg_.linear.x = x_dot[0];
+[5.324s]       |                                      ^~~~~
+[5.340s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:198:13: error: ‘reference_twist_publisher_’ was not declared in this scope
+[5.340s]   198 |             reference_twist_publisher_->publish(velocity_msg_);
+[5.340s]       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+[5.341s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:199:26: error: invalid use of ‘this’ in non-member function
+[5.341s]   199 |             RCLCPP_DEBUG(this->get_logger(), "Velocity published: x=%f, y=%f, z=%f, pitch=%f, roll=%f, yaw=%f", velocity_msg_.linear.x, velocity_msg_.linear.y, velocity_msg_.linear.z, velocity_msg_.angular.x, velocity_msg_.angular.y, velocity_msg_.angular.z);
+[5.341s]       |                          ^~~~
+[5.342s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:199:26: error: invalid use of ‘this’ in non-member function
+[5.342s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:199:13: error: template argument 1 is invalid
+[5.342s]   199 |             RCLCPP_DEBUG(this->get_logger(), "Velocity published: x=%f, y=%f, z=%f, pitch=%f, roll=%f, yaw=%f", velocity_msg_.linear.x, velocity_msg_.linear.y, velocity_msg_.linear.z, velocity_msg_.angular.x, velocity_msg_.angular.y, velocity_msg_.angular.z);
+[5.343s]       |             ^~~~~~~~~~~~
+[5.343s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:199:26: error: invalid use of ‘this’ in non-member function
+[5.343s]   199 |             RCLCPP_DEBUG(this->get_logger(), "Velocity published: x=%f, y=%f, z=%f, pitch=%f, roll=%f, yaw=%f", velocity_msg_.linear.x, velocity_msg_.linear.y, velocity_msg_.linear.z, velocity_msg_.angular.x, velocity_msg_.angular.y, velocity_msg_.angular.z);
+[5.343s]       |                          ^~~~
+[5.344s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:199:26: error: invalid use of ‘this’ in non-member function
+[5.344s]   199 |             RCLCPP_DEBUG(this->get_logger(), "Velocity published: x=%f, y=%f, z=%f, pitch=%f, roll=%f, yaw=%f", velocity_msg_.linear.x, velocity_msg_.linear.y, velocity_msg_.linear.z, velocity_msg_.angular.x, velocity_msg_.angular.y, velocity_msg_.angular.z);
+[5.344s]       |                          ^~~~
+[5.354s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:204:9: error: ‘pose_command_response_’ was not declared in this scope
+[5.354s]   204 |         pose_command_response_->success = true ;
+[5.354s]       |         ^~~~~~~~~~~~~~~~~~~~~~
+[5.361s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:207:28: error: ‘logger_’ was not declared in this scope
+[5.361s]   207 |         RCLCPP_INFO_STREAM(logger_, "Not sure how we got here.......") ;
+[5.362s]       |                            ^~~~~~~
+[5.362s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:207:9: error: template argument 1 is invalid
+[5.362s]   207 |         RCLCPP_INFO_STREAM(logger_, "Not sure how we got here.......") ;
+[5.362s]       |         ^~~~~~~~~~~~~~~~~~
+[5.372s] /home/aidan/code-554/applied-robotics-w2026/potential_field/src/PotentialFieldActionServer.cpp:208:30: error: ‘homing_response_’ was not declared in this scope
+[5.372s]   208 |         goal_handle->succeed(homing_response_); // action done. the client will be notified
+[5.372s]       |                              ^~~~~~~~~~~~~~~~
+[5.909s] gmake[2]: *** [CMakeFiles/potential_field_action_server.dir/build.make:90: CMakeFiles/potential_field_action_server.dir/src/potential_field_action_server.cpp.o] Error 1
+[5.909s] gmake[2]: *** Waiting for unfinished jobs....
+[6.394s] gmake[2]: *** [CMakeFiles/potential_field_action_server.dir/build.make:76: CMakeFiles/potential_field_action_server.dir/src/PotentialFieldActionServer.cpp.o] Error 1
+[6.394s] gmake[1]: *** [CMakeFiles/Makefile2:221: CMakeFiles/potential_field_action_server.dir/all] Error 2
+[6.394s] gmake[1]: *** Waiting for unfinished jobs....
+[14.370s] [ 75%] Linking CXX executable potential_field_task
+[14.804s] [ 75%] Built target potential_field_task
+[15.453s] [ 83%] Linking CXX executable potential_field_2d
+[15.834s] [ 83%] Built target potential_field_2d
+[15.886s] [ 91%] Linking CXX executable potential_field_joint
+[16.260s] [ 91%] Built target potential_field_joint
+[16.261s] gmake: *** [Makefile:146: all] Error 2
+[16.263s] Invoked command in '/home/aidan/code-554/applied-robotics-w2026/build/potential_field' returned '2': AMENT_PREFIX_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/aidan/code-554/applied-robotics-w2026/build/potential_field -- -j20 -l20

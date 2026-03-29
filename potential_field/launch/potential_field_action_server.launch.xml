@@ -1,0 +1,15 @@
+<launch>
+    <node pkg="potential_field" exec="potential_field_action_server" name="potential_field_action_server">
+        <param name="use_sim_time" value="true" />
+        <param name="with_redundancy" value="true" />
+        <param name="robot_pose_topic" value="/gen3/feedback/pose" />
+        <param name="target_twist_topic" value="/gen3/reference/twist" />
+        <param name="k_att" value="5.0"/>
+        <param name="done_translation" value="0.05"/>
+        <param name="done_rotation" value="0.01"/>
+        <param name="timeout_s" value="5.0"/>
+        <param name="action_name" value="/planner/move_pose" />
+    </node>
+</launch>
+
+

@@ -1,0 +1,52 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from highlevel_interfaces/action/PoseCommand.action
+// generated code does not contain a copyright notice
+
+
+module highlevel_interfaces {
+  module action {
+    struct PoseCommand_Goal {
+      @verbatim (language="comment", text=
+        "target x position")
+      double x;
+
+      @verbatim (language="comment", text=
+        "target y position")
+      double y;
+
+      @verbatim (language="comment", text=
+        "target z position")
+      double z;
+
+      @verbatim (language="comment", text=
+        "target roll")
+      double roll;
+
+      double pitch;
+
+      double yaw;
+    };
+    @verbatim (language="comment", text=
+      "result")
+    struct PoseCommand_Result {
+      boolean success;
+
+      string message;
+    };
+    @verbatim (language="comment", text=
+      "feedback")
+    struct PoseCommand_Feedback {
+      @verbatim (language="comment", text=
+        "distance between feedback and target translation")
+      double distance_translation;
+
+      @verbatim (language="comment", text=
+        "shortest angle between feedback and orientation")
+      double distance_orientation;
+
+      @verbatim (language="comment", text=
+        "time elapsed since action request is accepted")
+      double time_elapsed;
+    };
+  };
+};

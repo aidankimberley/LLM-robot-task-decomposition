@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "highlevel_interfaces__py",
+		"source" : "/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces/highlevel_interfaces__py"
+	}
+}

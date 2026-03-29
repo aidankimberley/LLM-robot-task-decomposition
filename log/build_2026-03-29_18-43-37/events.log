@@ -1,0 +1,230 @@
+[0.000000] (-) TimerEvent: {}
+[0.000138] (-) JobUnselected: {'identifier': 'dynamic_controller'}
+[0.000284] (-) JobUnselected: {'identifier': 'highlevel_controller'}
+[0.000439] (-) JobUnselected: {'identifier': 'highlevel_interfaces'}
+[0.000507] (-) JobUnselected: {'identifier': 'keyboard_controller'}
+[0.000572] (-) JobUnselected: {'identifier': 'potential_field'}
+[0.000597] (kinematic_controller) JobQueued: {'identifier': 'kinematic_controller', 'dependencies': OrderedDict({'highlevel_interfaces': '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces', 'potential_field': '/home/aidan/code-554/applied-robotics-w2026/install/potential_field'})}
+[0.000632] (kinematic_controller) JobStarted: {'identifier': 'kinematic_controller'}
+[0.008980] (kinematic_controller) JobProgress: {'identifier': 'kinematic_controller', 'progress': 'cmake'}
+[0.009487] (kinematic_controller) JobProgress: {'identifier': 'kinematic_controller', 'progress': 'build'}
+[0.010041] (kinematic_controller) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/aidan/code-554/applied-robotics-w2026/build/kinematic_controller', '--', '-j20', '-l20'], 'cwd': '/home/aidan/code-554/applied-robotics-w2026/build/kinematic_controller', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'VSCODE_CWD': '/home/aidan/code-554/applied-robotics-w2026/kinematic_controller', 'TMUX': '/tmp/tmux-1000/default,7847,0', 'CURSOR_EXTENSION_HOST_ROLE': 'agent-exec', 'VSCODE_ESM_ENTRYPOINT': 'vs/workbench/api/node/extensionHostProcess', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'aidan', 'VSCODE_NLS_CONFIG': '{"userLocale":"en-us","osLocale":"en-us","resolvedLanguage":"en","defaultMessagesFile":"/usr/share/cursor/resources/app/out/nls.messages.json","locale":"en-us","availableLanguages":{}}', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'CI': '1', 'VSCODE_HANDLES_UNCAUGHT_ERRORS': 'true', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '3', 'LD_LIBRARY_PATH': '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/aidan', 'CHROME_DESKTOP': 'cursor.desktop', 'OLDPWD': '/home/aidan/code-554/applied-robotics-w2026', 'TERM_PROGRAM_VERSION': '3.4', 'DESKTOP_SESSION': 'ubuntu', 'VSCODE_IPC_HOOK': '/run/user/1000/vscode-54c50abc-2.6.-main.sock', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'CURSOR_WORKSPACE_LABEL': 'code-554', 'SYSTEMD_EXEC_PID': '2874', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'NO_COLOR': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'VSCODE_CRASH_REPORTER_PROCESS_TYPE': 'extensionHost', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'aidan', 'FORCE_COLOR': '0', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'aidan', 'TERM': 'dumb', 'GAZEBO_MODEL_PATH': '/opt/ros/jazzy/share/', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'FC_FONTATIONS': '1', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/aidan-Precision-5570:@/tmp/.ICE-unix/2829,unix/aidan-Precision-5570:/tmp/.ICE-unix/2829', 'XDG_MENU_PREFIX': 'gnome-', 'VSCODE_PROCESS_TITLE': 'extension-host (agent-exec) code-554 [1-18]', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/4e39546d_9d68_4364_a953_e7405511a4fc', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'CURSOR_AGENT': '1', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SBX_CHROME_API_RQ': '1', 'GNOME_TERMINAL_SERVICE': ':1.111', 'TERM_PROGRAM': 'tmux', 'CURSOR_TRACE_ID': '30a9c5fa81bd4014958057342130ad72', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/aidan/code-554/applied-robotics-w2026/install/potential_field:/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:/opt/ros/jazzy', 'CURSOR_CLI_MODE': 'local', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'CURSOR_CLI': 'ELECTRON_RUN_AS_NODE=1 "/usr/share/cursor/bin/../cursor" "/usr/share/cursor/bin/../resources/app/out/cli.js"', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/aidan/code-554/applied-robotics-w2026/build/kinematic_controller', 'VSCODE_CLI': '1', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'VSCODE_CODE_CACHE_PATH': '/home/aidan/.config/Cursor/CachedData/224838f96445be37e3db643a163a817c15b36060', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', '_ZO_DOCTOR': '0', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'SANDBOX_LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'TMUX_PANE': '%0', 'ELECTRON_NO_ATTACH_CONSOLE': '1', 'CMAKE_PREFIX_PATH': '/home/aidan/code-554/applied-robotics-w2026/install/potential_field:/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'VSCODE_PID': '9008'}), 'shell': False}
+[0.076693] (kinematic_controller) StdoutLine: {'line': b'[ 33%] Building CXX object CMakeFiles/kinematic_controller.dir/src/KinematicController.cpp.o\n'}
+[0.099852] (-) TimerEvent: {}
+[0.200070] (-) TimerEvent: {}
+[0.300286] (-) TimerEvent: {}
+[0.400448] (-) TimerEvent: {}
+[0.500649] (-) TimerEvent: {}
+[0.600842] (-) TimerEvent: {}
+[0.701036] (-) TimerEvent: {}
+[0.801230] (-) TimerEvent: {}
+[0.901394] (-) TimerEvent: {}
+[1.001741] (-) TimerEvent: {}
+[1.101979] (-) TimerEvent: {}
+[1.202139] (-) TimerEvent: {}
+[1.302347] (-) TimerEvent: {}
+[1.402552] (-) TimerEvent: {}
+[1.502719] (-) TimerEvent: {}
+[1.602886] (-) TimerEvent: {}
+[1.703048] (-) TimerEvent: {}
+[1.803254] (-) TimerEvent: {}
+[1.903425] (-) TimerEvent: {}
+[2.003659] (-) TimerEvent: {}
+[2.103838] (-) TimerEvent: {}
+[2.204028] (-) TimerEvent: {}
+[2.304277] (-) TimerEvent: {}
+[2.404442] (-) TimerEvent: {}
+[2.504670] (-) TimerEvent: {}
+[2.604836] (-) TimerEvent: {}
+[2.705024] (-) TimerEvent: {}
+[2.805221] (-) TimerEvent: {}
+[2.905383] (-) TimerEvent: {}
+[3.005549] (-) TimerEvent: {}
+[3.105737] (-) TimerEvent: {}
+[3.205959] (-) TimerEvent: {}
+[3.306158] (-) TimerEvent: {}
+[3.406386] (-) TimerEvent: {}
+[3.506667] (-) TimerEvent: {}
+[3.606837] (-) TimerEvent: {}
+[3.707183] (-) TimerEvent: {}
+[3.807478] (-) TimerEvent: {}
+[3.907655] (-) TimerEvent: {}
+[4.007815] (-) TimerEvent: {}
+[4.108011] (-) TimerEvent: {}
+[4.208214] (-) TimerEvent: {}
+[4.308407] (-) TimerEvent: {}
+[4.408668] (-) TimerEvent: {}
+[4.508839] (-) TimerEvent: {}
+[4.608998] (-) TimerEvent: {}
+[4.709290] (-) TimerEvent: {}
+[4.809580] (-) TimerEvent: {}
+[4.909737] (-) TimerEvent: {}
+[5.009960] (-) TimerEvent: {}
+[5.110249] (-) TimerEvent: {}
+[5.210483] (-) TimerEvent: {}
+[5.310695] (-) TimerEvent: {}
+[5.410883] (-) TimerEvent: {}
+[5.511177] (-) TimerEvent: {}
+[5.611368] (-) TimerEvent: {}
+[5.711673] (-) TimerEvent: {}
+[5.811835] (-) TimerEvent: {}
+[5.912020] (-) TimerEvent: {}
+[6.012193] (-) TimerEvent: {}
+[6.112363] (-) TimerEvent: {}
+[6.212560] (-) TimerEvent: {}
+[6.312703] (-) TimerEvent: {}
+[6.412995] (-) TimerEvent: {}
+[6.513186] (-) TimerEvent: {}
+[6.613473] (-) TimerEvent: {}
+[6.713636] (-) TimerEvent: {}
+[6.813789] (-) TimerEvent: {}
+[6.913976] (-) TimerEvent: {}
+[7.014158] (-) TimerEvent: {}
+[7.114414] (-) TimerEvent: {}
+[7.214706] (-) TimerEvent: {}
+[7.314929] (-) TimerEvent: {}
+[7.415184] (-) TimerEvent: {}
+[7.515446] (-) TimerEvent: {}
+[7.615708] (-) TimerEvent: {}
+[7.715895] (-) TimerEvent: {}
+[7.816155] (-) TimerEvent: {}
+[7.916414] (-) TimerEvent: {}
+[8.016680] (-) TimerEvent: {}
+[8.116816] (-) TimerEvent: {}
+[8.216996] (-) TimerEvent: {}
+[8.317166] (-) TimerEvent: {}
+[8.417366] (-) TimerEvent: {}
+[8.517641] (-) TimerEvent: {}
+[8.617785] (-) TimerEvent: {}
+[8.717962] (-) TimerEvent: {}
+[8.818109] (-) TimerEvent: {}
+[8.918292] (-) TimerEvent: {}
+[9.018557] (-) TimerEvent: {}
+[9.118704] (-) TimerEvent: {}
+[9.218913] (-) TimerEvent: {}
+[9.319165] (-) TimerEvent: {}
+[9.419312] (-) TimerEvent: {}
+[9.519602] (-) TimerEvent: {}
+[9.619748] (-) TimerEvent: {}
+[9.719887] (-) TimerEvent: {}
+[9.820075] (-) TimerEvent: {}
+[9.920327] (-) TimerEvent: {}
+[10.020521] (-) TimerEvent: {}
+[10.120828] (-) TimerEvent: {}
+[10.221013] (-) TimerEvent: {}
+[10.321266] (-) TimerEvent: {}
+[10.421536] (-) TimerEvent: {}
+[10.521683] (-) TimerEvent: {}
+[10.621822] (-) TimerEvent: {}
+[10.721989] (-) TimerEvent: {}
+[10.822161] (-) TimerEvent: {}
+[10.922327] (-) TimerEvent: {}
+[11.022621] (-) TimerEvent: {}
+[11.122763] (-) TimerEvent: {}
+[11.222924] (-) TimerEvent: {}
+[11.323198] (-) TimerEvent: {}
+[11.423462] (-) TimerEvent: {}
+[11.523732] (-) TimerEvent: {}
+[11.623873] (-) TimerEvent: {}
+[11.724050] (-) TimerEvent: {}
+[11.824298] (-) TimerEvent: {}
+[11.924470] (-) TimerEvent: {}
+[12.024689] (-) TimerEvent: {}
+[12.124840] (-) TimerEvent: {}
+[12.225126] (-) TimerEvent: {}
+[12.325433] (-) TimerEvent: {}
+[12.425691] (-) TimerEvent: {}
+[12.525839] (-) TimerEvent: {}
+[12.626106] (-) TimerEvent: {}
+[12.726324] (-) TimerEvent: {}
+[12.826486] (-) TimerEvent: {}
+[12.926734] (-) TimerEvent: {}
+[13.026951] (-) TimerEvent: {}
+[13.127272] (-) TimerEvent: {}
+[13.227573] (-) TimerEvent: {}
+[13.327747] (-) TimerEvent: {}
+[13.428012] (-) TimerEvent: {}
+[13.528276] (-) TimerEvent: {}
+[13.628533] (-) TimerEvent: {}
+[13.728726] (-) TimerEvent: {}
+[13.828976] (-) TimerEvent: {}
+[13.929115] (-) TimerEvent: {}
+[14.029253] (-) TimerEvent: {}
+[14.129472] (-) TimerEvent: {}
+[14.229704] (-) TimerEvent: {}
+[14.329962] (-) TimerEvent: {}
+[14.430128] (-) TimerEvent: {}
+[14.530282] (-) TimerEvent: {}
+[14.630481] (-) TimerEvent: {}
+[14.730634] (-) TimerEvent: {}
+[14.830819] (-) TimerEvent: {}
+[14.931017] (-) TimerEvent: {}
+[15.031346] (-) TimerEvent: {}
+[15.131517] (-) TimerEvent: {}
+[15.231691] (-) TimerEvent: {}
+[15.331867] (-) TimerEvent: {}
+[15.432080] (-) TimerEvent: {}
+[15.532251] (-) TimerEvent: {}
+[15.632416] (-) TimerEvent: {}
+[15.732690] (-) TimerEvent: {}
+[15.832829] (-) TimerEvent: {}
+[15.933002] (-) TimerEvent: {}
+[16.033162] (-) TimerEvent: {}
+[16.133297] (-) TimerEvent: {}
+[16.233446] (-) TimerEvent: {}
+[16.333789] (-) TimerEvent: {}
+[16.433928] (-) TimerEvent: {}
+[16.534099] (-) TimerEvent: {}
+[16.634343] (-) TimerEvent: {}
+[16.734608] (-) TimerEvent: {}
+[16.834753] (-) TimerEvent: {}
+[16.934895] (-) TimerEvent: {}
+[17.035068] (-) TimerEvent: {}
+[17.135240] (-) TimerEvent: {}
+[17.235387] (-) TimerEvent: {}
+[17.335655] (-) TimerEvent: {}
+[17.435801] (-) TimerEvent: {}
+[17.535939] (-) TimerEvent: {}
+[17.636119] (-) TimerEvent: {}
+[17.736301] (-) TimerEvent: {}
+[17.836484] (-) TimerEvent: {}
+[17.936764] (-) TimerEvent: {}
+[18.036916] (-) TimerEvent: {}
+[18.137185] (-) TimerEvent: {}
+[18.237438] (-) TimerEvent: {}
+[18.302655] (kinematic_controller) StdoutLine: {'line': b'[ 66%] Linking CXX executable kinematic_controller\n'}
+[18.337559] (-) TimerEvent: {}
+[18.437698] (-) TimerEvent: {}
+[18.537942] (-) TimerEvent: {}
+[18.638111] (-) TimerEvent: {}
+[18.738281] (-) TimerEvent: {}
+[18.783545] (kinematic_controller) StdoutLine: {'line': b'[100%] Built target kinematic_controller\n'}
+[18.793919] (kinematic_controller) CommandEnded: {'returncode': 0}
+[18.794448] (kinematic_controller) JobProgress: {'identifier': 'kinematic_controller', 'progress': 'install'}
+[18.800531] (kinematic_controller) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/aidan/code-554/applied-robotics-w2026/build/kinematic_controller'], 'cwd': '/home/aidan/code-554/applied-robotics-w2026/build/kinematic_controller', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'VSCODE_CWD': '/home/aidan/code-554/applied-robotics-w2026/kinematic_controller', 'TMUX': '/tmp/tmux-1000/default,7847,0', 'CURSOR_EXTENSION_HOST_ROLE': 'agent-exec', 'VSCODE_ESM_ENTRYPOINT': 'vs/workbench/api/node/extensionHostProcess', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'aidan', 'VSCODE_NLS_CONFIG': '{"userLocale":"en-us","osLocale":"en-us","resolvedLanguage":"en","defaultMessagesFile":"/usr/share/cursor/resources/app/out/nls.messages.json","locale":"en-us","availableLanguages":{}}', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'CI': '1', 'VSCODE_HANDLES_UNCAUGHT_ERRORS': 'true', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '3', 'LD_LIBRARY_PATH': '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/aidan', 'CHROME_DESKTOP': 'cursor.desktop', 'OLDPWD': '/home/aidan/code-554/applied-robotics-w2026', 'TERM_PROGRAM_VERSION': '3.4', 'DESKTOP_SESSION': 'ubuntu', 'VSCODE_IPC_HOOK': '/run/user/1000/vscode-54c50abc-2.6.-main.sock', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'CURSOR_WORKSPACE_LABEL': 'code-554', 'SYSTEMD_EXEC_PID': '2874', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'NO_COLOR': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'VSCODE_CRASH_REPORTER_PROCESS_TYPE': 'extensionHost', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'aidan', 'FORCE_COLOR': '0', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'aidan', 'TERM': 'dumb', 'GAZEBO_MODEL_PATH': '/opt/ros/jazzy/share/', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'FC_FONTATIONS': '1', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/aidan-Precision-5570:@/tmp/.ICE-unix/2829,unix/aidan-Precision-5570:/tmp/.ICE-unix/2829', 'XDG_MENU_PREFIX': 'gnome-', 'VSCODE_PROCESS_TITLE': 'extension-host (agent-exec) code-554 [1-18]', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/4e39546d_9d68_4364_a953_e7405511a4fc', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'CURSOR_AGENT': '1', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SBX_CHROME_API_RQ': '1', 'GNOME_TERMINAL_SERVICE': ':1.111', 'TERM_PROGRAM': 'tmux', 'CURSOR_TRACE_ID': '30a9c5fa81bd4014958057342130ad72', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/aidan/code-554/applied-robotics-w2026/install/potential_field:/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:/opt/ros/jazzy', 'CURSOR_CLI_MODE': 'local', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'CURSOR_CLI': 'ELECTRON_RUN_AS_NODE=1 "/usr/share/cursor/bin/../cursor" "/usr/share/cursor/bin/../resources/app/out/cli.js"', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/aidan/code-554/applied-robotics-w2026/build/kinematic_controller', 'VSCODE_CLI': '1', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'VSCODE_CODE_CACHE_PATH': '/home/aidan/.config/Cursor/CachedData/224838f96445be37e3db643a163a817c15b36060', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', '_ZO_DOCTOR': '0', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'SANDBOX_LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'TMUX_PANE': '%0', 'ELECTRON_NO_ATTACH_CONSOLE': '1', 'CMAKE_PREFIX_PATH': '/home/aidan/code-554/applied-robotics-w2026/install/potential_field:/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'VSCODE_PID': '9008'}), 'shell': False}
+[18.806717] (kinematic_controller) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[18.806866] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/lib/kinematic_controller/kinematic_controller\n'}
+[18.813844] (kinematic_controller) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/lib/kinematic_controller/kinematic_controller" to ""\n'}
+[18.814034] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch\n'}
+[18.814141] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch/3d.launch.xml\n'}
+[18.814240] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch/a4_with_redundancy.launch.xml\n'}
+[18.814368] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch/a4_without_redundancy.launch.xml\n'}
+[18.814474] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch/6d.launch.xml\n'}
+[18.814593] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/ament_index/resource_index/package_run_dependencies/kinematic_controller\n'}
+[18.814727] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/ament_index/resource_index/parent_prefix_path/kinematic_controller\n'}
+[18.814910] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/environment/ament_prefix_path.sh\n'}
+[18.814955] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/environment/ament_prefix_path.dsv\n'}
+[18.814995] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/environment/path.sh\n'}
+[18.815041] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/environment/path.dsv\n'}
+[18.815088] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/local_setup.bash\n'}
+[18.815131] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/local_setup.sh\n'}
+[18.815174] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/local_setup.zsh\n'}
+[18.815221] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/local_setup.dsv\n'}
+[18.815263] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/package.dsv\n'}
+[18.815302] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/ament_index/resource_index/packages/kinematic_controller\n'}
+[18.815340] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/cmake/kinematic_controllerConfig.cmake\n'}
+[18.815377] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/cmake/kinematic_controllerConfig-version.cmake\n'}
+[18.815416] (kinematic_controller) StdoutLine: {'line': b'-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/package.xml\n'}
+[18.816096] (kinematic_controller) CommandEnded: {'returncode': 0}
+[18.824997] (kinematic_controller) JobEnded: {'identifier': 'kinematic_controller', 'rc': 0}
+[18.825290] (-) EventReactorShutdown: {}

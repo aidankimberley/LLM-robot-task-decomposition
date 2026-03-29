@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from highlevel_interfaces/srv/Move2d.srv
+// generated code does not contain a copyright notice
+
+
+module highlevel_interfaces {
+  module srv {
+    struct Move2d_Request {
+      double x;
+
+      double y;
+    };
+    struct Move2d_Response {
+      boolean success;
+    };
+  };
+};

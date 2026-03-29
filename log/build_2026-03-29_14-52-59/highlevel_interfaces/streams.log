@@ -1,0 +1,350 @@
+[0.009s] Invoking command in '/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/aidan/code-554/applied-robotics-w2026/highlevel_interfaces -DCMAKE_INSTALL_PREFIX=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces
+[0.126s] -- The C compiler identification is GNU 13.3.0
+[0.197s] -- The CXX compiler identification is GNU 13.3.0
+[0.222s] -- Detecting C compiler ABI info
+[0.337s] -- Detecting C compiler ABI info - done
+[0.355s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.356s] -- Detecting C compile features
+[0.357s] -- Detecting C compile features - done
+[0.370s] -- Detecting CXX compiler ABI info
+[0.508s] -- Detecting CXX compiler ABI info - done
+[0.525s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.525s] -- Detecting CXX compile features
+[0.526s] -- Detecting CXX compile features - done
+[0.531s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.732s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.862s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[0.870s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.934s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.998s] -- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[1.728s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[2.193s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.802s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.816s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[2.957s] -- Found PythonExtra: /usr/bin/python3  
+[3.411s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[3.459s] -- Configuring done (3.4s)
+[3.496s] -- Generating done (0.0s)
+[3.509s] -- Build files have been written to: /home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces
+[3.517s] Invoked command in '/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/aidan/code-554/applied-robotics-w2026/highlevel_interfaces -DCMAKE_INSTALL_PREFIX=/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces
+[3.517s] Invoking command in '/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces -- -j20 -l20
+[3.576s] [  1%] Generating type hashes for ROS interfaces
+[3.587s] [  1%] Built target ament_cmake_python_copy_highlevel_interfaces
+[3.807s] running egg_info
+[3.808s] creating highlevel_interfaces.egg-info
+[3.827s] writing highlevel_interfaces.egg-info/PKG-INFO
+[3.827s] writing dependency_links to highlevel_interfaces.egg-info/dependency_links.txt
+[3.827s] writing top-level names to highlevel_interfaces.egg-info/top_level.txt
+[3.827s] writing manifest file 'highlevel_interfaces.egg-info/SOURCES.txt'
+[3.886s] reading manifest file 'highlevel_interfaces.egg-info/SOURCES.txt'
+[3.887s] writing manifest file 'highlevel_interfaces.egg-info/SOURCES.txt'
+[3.903s] [  1%] Built target highlevel_interfaces__rosidl_generator_type_description
+[3.917s] [  3%] Generating C code for ROS interfaces
+[3.919s] [  3%] Built target ament_cmake_python_build_highlevel_interfaces_egg
+[3.930s] [  4%] Generating C++ code for ROS interfaces
+[4.612s] [  4%] Built target highlevel_interfaces__cpp
+[4.715s] [  6%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/srv/detail/move2d__type_support.c.o
+[4.716s] [  9%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/action/detail/pose_command__functions.c.o
+[4.716s] [ 10%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/srv/detail/move3d__functions.c.o
+[4.717s] [ 10%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/srv/detail/move3d__description.c.o
+[4.717s] [ 12%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/srv/detail/set_kd__description.c.o
+[4.718s] [ 14%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/srv/detail/set_kd__functions.c.o
+[4.718s] [ 17%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/srv/detail/move2d__description.c.o
+[4.718s] [ 15%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/action/detail/pose_command__description.c.o
+[4.720s] [ 18%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/action/detail/pose_command__type_support.c.o
+[4.721s] [ 20%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/srv/detail/move2d__functions.c.o
+[4.723s] [ 21%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/srv/detail/move3d__type_support.c.o
+[4.723s] [ 23%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_c.dir/rosidl_generator_c/highlevel_interfaces/srv/detail/set_kd__type_support.c.o
+[4.946s] [ 25%] Linking C shared library libhighlevel_interfaces__rosidl_generator_c.so
+[4.988s] [ 25%] Built target highlevel_interfaces__rosidl_generator_c
+[5.004s] [ 26%] Generating C++ type support dispatch for ROS interfaces
+[5.004s] [ 28%] Generating C++ type support for eProsima Fast-RTPS
+[5.006s] [ 29%] Generating C introspection for ROS interfaces
+[5.008s] [ 31%] Generating C++ introspection for ROS interfaces
+[5.010s] [ 34%] Generating C type support dispatch for ROS interfaces
+[5.010s] [ 32%] Generating C type support for eProsima Fast-RTPS
+[5.626s] [ 35%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/highlevel_interfaces/action/pose_command__type_support.cpp.o
+[5.635s] [ 37%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/highlevel_interfaces/srv/move2d__type_support.cpp.o
+[5.636s] [ 39%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/highlevel_interfaces/srv/set_kd__type_support.cpp.o
+[5.636s] [ 40%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/highlevel_interfaces/srv/move3d__type_support.cpp.o
+[5.644s] [ 42%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/highlevel_interfaces/action/pose_command__type_support.cpp.o
+[5.647s] [ 43%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/highlevel_interfaces/srv/set_kd__type_support.cpp.o
+[5.653s] [ 45%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/highlevel_interfaces/srv/move2d__type_support.cpp.o
+[5.653s] [ 46%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/highlevel_interfaces/srv/move3d__type_support.cpp.o
+[5.754s] [ 48%] Linking CXX shared library libhighlevel_interfaces__rosidl_typesupport_c.so
+[5.839s] [ 48%] Built target highlevel_interfaces__rosidl_typesupport_c
+[5.883s] [ 50%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/highlevel_interfaces/srv/detail/move2d__type_support.cpp.o
+[5.892s] [ 51%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/highlevel_interfaces/action/detail/pose_command__type_support.cpp.o
+[5.892s] [ 53%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/highlevel_interfaces/srv/detail/move3d__type_support.cpp.o
+[5.897s] [ 54%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/highlevel_interfaces/srv/detail/set_kd__type_support.cpp.o
+[5.941s] [ 56%] Building C object CMakeFiles/highlevel_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/highlevel_interfaces/action/detail/pose_command__type_support.c.o
+[5.947s] [ 57%] Building C object CMakeFiles/highlevel_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/highlevel_interfaces/srv/detail/move3d__type_support.c.o
+[5.949s] [ 59%] Building C object CMakeFiles/highlevel_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/highlevel_interfaces/srv/detail/set_kd__type_support.c.o
+[5.950s] [ 60%] Building C object CMakeFiles/highlevel_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/highlevel_interfaces/srv/detail/move2d__type_support.c.o
+[6.124s] [ 62%] Linking C shared library libhighlevel_interfaces__rosidl_typesupport_introspection_c.so
+[6.209s] [ 67%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/highlevel_interfaces/srv/detail/dds_fastrtps/move3d__type_support.cpp.o
+[6.210s] [ 67%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/highlevel_interfaces/action/detail/dds_fastrtps/pose_command__type_support.cpp.o
+[6.210s] [ 67%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/highlevel_interfaces/srv/detail/dds_fastrtps/move2d__type_support.cpp.o
+[6.210s] [ 68%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/highlevel_interfaces/srv/detail/dds_fastrtps/set_kd__type_support.cpp.o
+[6.210s] [ 68%] Built target highlevel_interfaces__rosidl_typesupport_introspection_c
+[6.376s] [ 70%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/highlevel_interfaces/srv/detail/move2d__type_support_c.cpp.o
+[6.383s] [ 73%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/highlevel_interfaces/action/detail/pose_command__type_support_c.cpp.o
+[6.384s] [ 71%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/highlevel_interfaces/srv/detail/set_kd__type_support_c.cpp.o
+[6.387s] [ 75%] Building CXX object CMakeFiles/highlevel_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/highlevel_interfaces/srv/detail/move3d__type_support_c.cpp.o
+[6.778s] [ 76%] Linking CXX shared library libhighlevel_interfaces__rosidl_typesupport_cpp.so
+[6.908s] [ 76%] Built target highlevel_interfaces__rosidl_typesupport_cpp
+[7.107s] [ 78%] Linking CXX shared library libhighlevel_interfaces__rosidl_typesupport_introspection_cpp.so
+[7.247s] [ 78%] Built target highlevel_interfaces__rosidl_typesupport_introspection_cpp
+[7.583s] [ 79%] Linking CXX shared library libhighlevel_interfaces__rosidl_typesupport_fastrtps_c.so
+[7.667s] [ 79%] Built target highlevel_interfaces__rosidl_typesupport_fastrtps_c
+[7.763s] [ 81%] Linking CXX shared library libhighlevel_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[7.847s] [ 81%] Built target highlevel_interfaces__rosidl_typesupport_fastrtps_cpp
+[7.868s] [ 81%] Built target highlevel_interfaces
+[7.900s] [ 82%] Generating Python code for ROS interfaces
+[8.951s] [ 82%] Built target highlevel_interfaces__py
+[8.978s] [ 85%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_py.dir/rosidl_generator_py/highlevel_interfaces/srv/_set_kd_s.c.o
+[8.978s] [ 85%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_py.dir/rosidl_generator_py/highlevel_interfaces/srv/_move2d_s.c.o
+[8.978s] [ 87%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_py.dir/rosidl_generator_py/highlevel_interfaces/action/_pose_command_s.c.o
+[8.979s] [ 89%] Building C object CMakeFiles/highlevel_interfaces__rosidl_generator_py.dir/rosidl_generator_py/highlevel_interfaces/srv/_move3d_s.c.o
+[9.241s] [ 90%] Linking C shared library libhighlevel_interfaces__rosidl_generator_py.so
+[9.292s] [ 90%] Built target highlevel_interfaces__rosidl_generator_py
+[9.317s] [ 92%] Building C object CMakeFiles/highlevel_interfaces_s__rosidl_typesupport_c.dir/rosidl_generator_py/highlevel_interfaces/_highlevel_interfaces_s.ep.rosidl_typesupport_c.c.o
+[9.319s] [ 93%] Building C object CMakeFiles/highlevel_interfaces_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/highlevel_interfaces/_highlevel_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o
+[9.320s] [ 95%] Building C object CMakeFiles/highlevel_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/highlevel_interfaces/_highlevel_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o
+[9.503s] [ 96%] Linking C shared module rosidl_generator_py/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_c.so
+[9.508s] [ 98%] Linking C shared module rosidl_generator_py/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_introspection_c.so
+[9.509s] [100%] Linking C shared module rosidl_generator_py/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_fastrtps_c.so
+[9.550s] [100%] Built target highlevel_interfaces_s__rosidl_typesupport_c
+[9.550s] [100%] Built target highlevel_interfaces_s__rosidl_typesupport_fastrtps_c
+[9.553s] [100%] Built target highlevel_interfaces_s__rosidl_typesupport_introspection_c
+[9.567s] Invoked command in '/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces -- -j20 -l20
+[9.581s] Invoking command in '/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces
+[9.588s] -- Install configuration: ""
+[9.588s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/ament_index/resource_index/rosidl_interfaces/highlevel_interfaces
+[9.588s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/action/PoseCommand.json
+[9.589s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/srv/Move2d.json
+[9.589s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/srv/Move3d.json
+[9.589s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/srv/SetKD.json
+[9.589s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces
+[9.589s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv
+[9.589s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/move2d.h
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/move3d.h
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__type_support.c
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__description.c
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__description.c
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__struct.h
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__functions.c
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__functions.h
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__functions.c
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__struct.h
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__type_support.h
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__functions.c
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__type_support.h
+[9.590s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__functions.h
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__struct.h
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__description.c
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__functions.h
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__type_support.c
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__type_support.h
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__type_support.c
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/set_kd.h
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/pose_command.h
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail
+[9.591s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__functions.h
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__type_support.c
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__struct.h
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__type_support.h
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__functions.c
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__description.c
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg/rosidl_generator_c__visibility_control.h
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/environment/library_path.sh
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/environment/library_path.dsv
+[9.592s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_generator_c.so
+[9.592s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_generator_c.so" to ""
+[9.592s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces
+[9.593s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv
+[9.593s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail
+[9.593s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__rosidl_typesupport_fastrtps_c.h
+[9.593s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__rosidl_typesupport_fastrtps_c.h
+[9.593s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__rosidl_typesupport_fastrtps_c.h
+[9.593s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action
+[9.593s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail
+[9.593s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__rosidl_typesupport_fastrtps_c.h
+[9.593s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg
+[9.593s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[9.593s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_fastrtps_c.so
+[9.593s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[9.593s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces
+[9.594s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv
+[9.594s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail
+[9.594s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__type_support.c
+[9.594s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__rosidl_typesupport_introspection_c.h
+[9.594s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__rosidl_typesupport_introspection_c.h
+[9.594s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__type_support.c
+[9.594s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__rosidl_typesupport_introspection_c.h
+[9.594s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__type_support.c
+[9.594s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action
+[9.594s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail
+[9.594s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__type_support.c
+[9.594s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__rosidl_typesupport_introspection_c.h
+[9.594s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg
+[9.595s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[9.595s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_introspection_c.so
+[9.595s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[9.595s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_c.so
+[9.595s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_c.so" to ""
+[9.595s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces
+[9.595s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv
+[9.596s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__builder.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__type_support.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__type_support.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__struct.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__type_support.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__struct.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__traits.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__struct.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__traits.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__builder.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__traits.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__builder.hpp
+[9.596s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/move2d.hpp
+[9.597s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/set_kd.hpp
+[9.597s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/move3d.hpp
+[9.597s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action
+[9.597s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail
+[9.597s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__builder.hpp
+[9.597s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__traits.hpp
+[9.597s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__struct.hpp
+[9.597s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__type_support.hpp
+[9.598s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/pose_command.hpp
+[9.598s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg
+[9.598s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[9.598s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces
+[9.598s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv
+[9.598s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail
+[9.598s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__rosidl_typesupport_fastrtps_cpp.hpp
+[9.598s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/dds_fastrtps
+[9.598s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__rosidl_typesupport_fastrtps_cpp.hpp
+[9.598s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__rosidl_typesupport_fastrtps_cpp.hpp
+[9.598s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action
+[9.599s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail
+[9.599s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/dds_fastrtps
+[9.599s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__rosidl_typesupport_fastrtps_cpp.hpp
+[9.599s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg
+[9.599s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[9.599s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[9.599s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[9.599s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces
+[9.599s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv
+[9.599s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail
+[9.599s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__rosidl_typesupport_introspection_cpp.hpp
+[9.600s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__rosidl_typesupport_introspection_cpp.hpp
+[9.600s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move3d__type_support.cpp
+[9.600s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/move2d__type_support.cpp
+[9.600s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__rosidl_typesupport_introspection_cpp.hpp
+[9.600s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/srv/detail/set_kd__type_support.cpp
+[9.600s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action
+[9.600s] -- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail
+[9.600s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__rosidl_typesupport_introspection_cpp.hpp
+[9.600s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/include/highlevel_interfaces/highlevel_interfaces/action/detail/pose_command__type_support.cpp
+[9.600s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_introspection_cpp.so
+[9.600s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[9.600s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_cpp.so
+[9.601s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_typesupport_cpp.so" to ""
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/environment/pythonpath.sh
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/environment/pythonpath.dsv
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces-0.0.0-py3.12.egg-info
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces-0.0.0-py3.12.egg-info/top_level.txt
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces-0.0.0-py3.12.egg-info/dependency_links.txt
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces-0.0.0-py3.12.egg-info/SOURCES.txt
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces-0.0.0-py3.12.egg-info/PKG-INFO
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_c.so
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_fastrtps_c.so
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv
+[9.601s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/_move3d_s.c
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/__init__.py
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/_move2d.py
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/_set_kd_s.c
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/_move3d.py
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/_move2d_s.c
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/_set_kd.py
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/__init__.py
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/action
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/action/__init__.py
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/action/_pose_command.py
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/action/_pose_command_s.c
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/_highlevel_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/_highlevel_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[9.602s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_introspection_c.so
+[9.603s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/_highlevel_interfaces_s.ep.rosidl_typesupport_c.c
+[9.662s] Listing '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces'...
+[9.662s] Compiling '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/__init__.py'...
+[9.662s] Listing '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/action'...
+[9.662s] Compiling '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/action/__init__.py'...
+[9.662s] Compiling '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/action/_pose_command.py'...
+[9.662s] Listing '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv'...
+[9.662s] Compiling '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/__init__.py'...
+[9.662s] Compiling '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/_move2d.py'...
+[9.662s] Compiling '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/_move3d.py'...
+[9.662s] Compiling '/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/srv/_set_kd.py'...
+[9.668s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_fastrtps_c.so
+[9.668s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_fastrtps_c.so" to ""
+[9.668s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_introspection_c.so
+[9.668s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_introspection_c.so" to ""
+[9.668s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_c.so
+[9.669s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/python3.12/site-packages/highlevel_interfaces/highlevel_interfaces_s__rosidl_typesupport_c.so" to ""
+[9.669s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_generator_py.so
+[9.669s] -- Set non-toolchain portion of runtime path of "/home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/lib/libhighlevel_interfaces__rosidl_generator_py.so" to ""
+[9.669s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/action/PoseCommand.idl
+[9.669s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/srv/Move2d.idl
+[9.669s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/srv/Move3d.idl
+[9.669s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/srv/SetKD.idl
+[9.669s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/action/PoseCommand.action
+[9.669s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/srv/Move2d.srv
+[9.669s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/srv/Move3d.srv
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/srv/SetKD.srv
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/ament_index/resource_index/package_run_dependencies/highlevel_interfaces
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/ament_index/resource_index/parent_prefix_path/highlevel_interfaces
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/environment/ament_prefix_path.sh
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/environment/ament_prefix_path.dsv
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/environment/path.sh
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/environment/path.dsv
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/local_setup.bash
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/local_setup.sh
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/local_setup.zsh
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/local_setup.dsv
+[9.670s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/package.dsv
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/ament_index/resource_index/packages/highlevel_interfaces
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/export_highlevel_interfaces__rosidl_generator_cExport.cmake
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/export_highlevel_interfaces__rosidl_generator_cExport-noconfig.cmake
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/export_highlevel_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/export_highlevel_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfaces__rosidl_typesupport_cExport.cmake
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/export_highlevel_interfaces__rosidl_generator_cppExport.cmake
+[9.671s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/export_highlevel_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/export_highlevel_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfaces__rosidl_typesupport_cppExport.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/export_highlevel_interfaces__rosidl_generator_pyExport.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/export_highlevel_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/rosidl_cmake-extras.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[9.672s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[9.673s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[9.673s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[9.673s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[9.673s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[9.673s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfacesConfig.cmake
+[9.673s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/cmake/highlevel_interfacesConfig-version.cmake
+[9.673s] -- Installing: /home/aidan/code-554/applied-robotics-w2026/install/highlevel_interfaces/share/highlevel_interfaces/package.xml
+[9.675s] Invoked command in '/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces

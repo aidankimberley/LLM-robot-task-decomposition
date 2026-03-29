@@ -1,6 +1,7 @@
 
 #include "pinocchio/multibody/model.hpp"
 #include "pinocchio/multibody/data.hpp"
+#include "pinocchio/multibody/fwd.hpp"
 #include <Eigen/Core>
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
@@ -43,8 +44,11 @@ class KinematicController : public rclcpp::Node {
         Eigen::VectorXd v_;
         Eigen::VectorXd tau_;
         Eigen::MatrixXd jacobian_;
+        Eigen::MatrixXd jacobian_pos_;
         
         bool with_redundancy_;
+        bool use_6D_;
+        pinocchio::FrameIndex ee_frame_id_;
         Eigen::VectorXd reference_homing_velocity_;
         geometry_msgs::msg::Pose end_pose_;
         geometry_msgs::msg::Twist end_twist_;

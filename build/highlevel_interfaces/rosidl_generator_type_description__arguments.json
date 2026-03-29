@@ -1,0 +1,16 @@
+{
+  "package_name": "highlevel_interfaces",
+  "output_dir": "/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces/rosidl_generator_type_description/highlevel_interfaces",
+  "idl_tuples": [
+    "/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces/rosidl_adapter/highlevel_interfaces:action/PoseCommand.idl",
+    "/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces/rosidl_adapter/highlevel_interfaces:srv/Move2d.idl",
+    "/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces/rosidl_adapter/highlevel_interfaces:srv/Move3d.idl",
+    "/home/aidan/code-554/applied-robotics-w2026/build/highlevel_interfaces/rosidl_adapter/highlevel_interfaces:srv/SetKD.idl"
+  ],
+  "include_paths": [
+    "service_msgs:/opt/ros/jazzy/share/service_msgs",
+    "builtin_interfaces:/opt/ros/jazzy/share/builtin_interfaces",
+    "action_msgs:/opt/ros/jazzy/share/action_msgs",
+    "unique_identifier_msgs:/opt/ros/jazzy/share/unique_identifier_msgs"
+  ]
+}

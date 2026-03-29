@@ -4,6 +4,7 @@
 #include "pinocchio/algorithm/joint-configuration.hpp"
 #include "pinocchio/algorithm/kinematics.hpp"
 #include "pinocchio/algorithm/jacobian.hpp"
+#include "pinocchio/algorithm/frames.hpp"
 #include "pinocchio/algorithm/rnea.hpp"
 #include <Eigen/Geometry>
 #include <functional>
@@ -21,6 +22,7 @@ KinematicController::KinematicController(const std::string& name) : rclcpp::Node
     this->declare_parameter<std::string>("reference_twist_topic", "");
     this->declare_parameter<std::string>("reference_homing_velocity_topic", "");
     this->declare_parameter<bool>("with_redundancy", false);
+    this->declare_parameter<bool>("use_6D",false);
     auto joint_state_topic = this->get_parameter("joint_state_topic").as_string();
     auto end_pose_topic = this->get_parameter("end_pose_topic").as_string();
     auto end_twist_topic = this->get_parameter("end_twist_topic").as_string();
@@ -28,6 +30,7 @@ KinematicController::KinematicController(const std::string& name) : rclcpp::Node
     auto reference_twist_topic = this->get_parameter("reference_twist_topic").as_string();
     auto reference_homing_velocity_topic = this->get_parameter("reference_homing_velocity_topic").as_string();
     with_redundancy_ = this->get_parameter("with_redundancy").as_bool();
+    use_6D_ = this->get_parameter("use_6D").as_bool();
     if (!this->get_parameter("urdf_file_name", urdf_file_name_)){
         RCLCPP_WARN(this->get_logger(), "Failed to get parameter urdf_file_name, setting to default value");
     }
@@ -56,29 +59,35 @@ KinematicController::KinematicController(const std::string& name) : rclcpp::Node
     v_ = Eigen::VectorXd::Zero(model_.nv);
     reference_homing_velocity_ = Eigen::VectorXd::Zero(model_.nv);
     jacobian_ = Eigen::MatrixXd::Zero(6, model_.nv);
+    ee_frame_id_ = model_.getFrameId("end_effector_link");
 }
 
 void KinematicController::joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg){
-    // Convert std::vector to Eigen::VectorXd
     RCLCPP_DEBUG(this->get_logger(), "Joint state callback received");
-    q_ = Eigen::Map<const Eigen::VectorXd>(msg->position.data(), msg->position.size());
-    v_ = Eigen::Map<const Eigen::VectorXd>(msg->velocity.data(), msg->velocity.size());
+    if (static_cast<Eigen::Index>(msg->position.size()) != model_.nq ||
+        static_cast<Eigen::Index>(msg->velocity.size()) != model_.nv) {
+        RCLCPP_WARN_THROTTLE(
+            this->get_logger(), *this->get_clock(), 2000,
+            "JointState size mismatch: position %zu velocity %zu (expected nq=%d nv=%d). "
+            "Use a URDF whose controlled DOF match /joint_states.",
+            msg->position.size(), msg->velocity.size(), static_cast<int>(model_.nq),
+            static_cast<int>(model_.nv));
+        return;
+    }
+    q_ = Eigen::Map<const Eigen::VectorXd>(msg->position.data(), model_.nq);
+    v_ = Eigen::Map<const Eigen::VectorXd>(msg->velocity.data(), model_.nv);
 
-    //calculate the end effector pose and twist
     pinocchio::forwardKinematics(model_, data_, q_, v_);
     pinocchio::computeJointJacobians(model_, data_, q_);
-    
-    auto HAND_ID = model_.getJointId("end-effector_link") - 1;
+    pinocchio::updateFramePlacements(model_, data_);
 
-    pinocchio::SE3 fbk_pose = data_.oMi[HAND_ID];
-
-    Eigen::Vector3d fbk_pos = fbk_pose.translation(); //eigen vector
-    Eigen::Matrix3d fbk_rot = fbk_pose.rotation(); //eigen matrix
-    //get quaternion from rotation matrix
+    const pinocchio::SE3& fbk_pose = data_.oMf[ee_frame_id_];
+    Eigen::Vector3d fbk_pos = fbk_pose.translation();
+    Eigen::Matrix3d fbk_rot = fbk_pose.rotation();
     Eigen::Quaterniond quat(fbk_rot);
 
-    jacobian_ = Eigen::MatrixXd::Zero(6, model_.nv);
-    pinocchio::getJointJacobian(model_, data_, HAND_ID, pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED, jacobian_);
+    pinocchio::getFrameJacobian(model_, data_, ee_frame_id_,
+                                pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED, jacobian_);
 
     Eigen::VectorXd twist_vector = jacobian_ * v_;
 
@@ -111,40 +120,47 @@ void KinematicController::joint_state_callback(const sensor_msgs::msg::JointStat
 
 void KinematicController::reference_homing_velocity_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg){
     RCLCPP_DEBUG(this->get_logger(), "Reference homing velocity callback received");
+    reference_homing_velocity_.setZero();
     const std::vector<double>& data = msg->data;
-    reference_homing_velocity_ = Eigen::VectorXd::Zero(data.size());
-    for (size_t i = 0; i < data.size(); i++){
-        reference_homing_velocity_(i) = data[i];
+    const Eigen::Index n =
+        std::min(static_cast<Eigen::Index>(data.size()), static_cast<Eigen::Index>(model_.nv));
+    for (Eigen::Index i = 0; i < n; ++i) {
+        reference_homing_velocity_(i) = data[static_cast<size_t>(i)];
     }
 }
 
 void KinematicController::reference_twist_callback(const geometry_msgs::msg::Twist::SharedPtr msg){
     RCLCPP_DEBUG(this->get_logger(), "IK callback received");
-    //inverse kinematics
-    //q_dot = J_pseudo * x_dot
 
-    //POTNEITALLY ONLY NEED TO CALCULATE THE  XYZ TRANSLATION -> JACOBIAN ONLY TOP 3 ROWS
-    
-    // Use full 6D twist (linear + angular)
-    Eigen::VectorXd x_dot(6);
-    x_dot(0) = msg->linear.x;
-    x_dot(1) = msg->linear.y;
-    x_dot(2) = msg->linear.z;
-    x_dot(3) = msg->angular.x;
-    x_dot(4) = msg->angular.y;
-    x_dot(5) = msg->angular.z;
+    Eigen::VectorXd q_dot(model_.nv);
+    if (use_6D_) {
+        Eigen::VectorXd x_dot(6);
+        x_dot << msg->linear.x, msg->linear.y, msg->linear.z, msg->angular.x, msg->angular.y,
+            msg->angular.z;
+        const Eigen::MatrixXd jacobian_pseudo =
+            jacobian_.completeOrthogonalDecomposition().pseudoInverse();
+        if (with_redundancy_) {
+            const Eigen::MatrixXd N =
+                Eigen::MatrixXd::Identity(model_.nv, model_.nv) - jacobian_pseudo * jacobian_;
+            q_dot = jacobian_pseudo * x_dot + N * reference_homing_velocity_;
+        } else {
+            q_dot = jacobian_pseudo * x_dot;
+        }
+    } else {
+        Eigen::VectorXd x_dot(3);
+        x_dot << msg->linear.x, msg->linear.y, msg->linear.z;
+        jacobian_pos_ = jacobian_.topRows(3);
+        const Eigen::MatrixXd jacobian_pos_pseudo =
+            jacobian_pos_.completeOrthogonalDecomposition().pseudoInverse();
+        if (with_redundancy_) {
+            const Eigen::MatrixXd N =
+                Eigen::MatrixXd::Identity(model_.nv, model_.nv) - jacobian_pos_pseudo * jacobian_pos_;
+            q_dot = jacobian_pos_pseudo * x_dot + N * reference_homing_velocity_;
+        } else {
+            q_dot = jacobian_pos_pseudo * x_dot;
+        }
+    }
 
-    // jacobian_ is 6 x nv, pseudoInverse is nv x 6, x_dot is 6 x 1 -> q_dot is nv x 1
-    Eigen::MatrixXd jacobian_pseudo = jacobian_.completeOrthogonalDecomposition().pseudoInverse();
-    Eigen::VectorXd q_dot;
-    if (with_redundancy_){
-        Eigen::MatrixXd N = Eigen::MatrixXd::Identity(model_.nv, model_.nv) - jacobian_pseudo * jacobian_;
-        q_dot = jacobian_pseudo * x_dot + N * reference_homing_velocity_;
-    }
-    else{
-        q_dot = jacobian_pseudo * x_dot;
-    }
-    
     //convert to std::vector
     std::vector<double> q_dot_vector(q_dot.size());
     for (Eigen::Index i = 0; i < q_dot.size(); i++){

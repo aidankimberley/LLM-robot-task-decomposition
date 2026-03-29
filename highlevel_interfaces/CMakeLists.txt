@@ -12,6 +12,7 @@ find_package(rosidl_default_generators REQUIRED) # the package that generates me
 
 # Generate a list of msg/srv
 rosidl_generate_interfaces(${PROJECT_NAME}
+  "action/PoseCommand.action"
   "srv/Move2d.srv"
   "srv/Move3d.srv"
   "srv/SetKD.srv"
