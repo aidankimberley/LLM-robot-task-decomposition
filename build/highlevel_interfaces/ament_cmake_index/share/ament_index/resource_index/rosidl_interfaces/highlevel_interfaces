@@ -1,8 +1,0 @@
-action/PoseCommand.action
-action/PoseCommand.idl
-srv/Move2d.idl
-srv/Move2d.srv
-srv/Move3d.idl
-srv/Move3d.srv
-srv/SetKD.idl
-srv/SetKD.srv
