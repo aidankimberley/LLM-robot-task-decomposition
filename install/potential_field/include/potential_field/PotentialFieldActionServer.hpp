@@ -1,5 +1,3 @@
-#pragma once
-
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/logger.hpp>
 #include <rclcpp_action/rclcpp_action.hpp>
@@ -8,6 +6,8 @@
 #include <geometry_msgs/msg/twist.hpp>
 
 #include <highlevel_interfaces/action/pose_command.hpp>
+
+#include <Eigen/Geometry>
 
 using PoseCommandAction = highlevel_interfaces::action::PoseCommand ; 
 using PoseCommandGoalHandle = rclcpp_action::ServerGoalHandle<PoseCommandAction>;
@@ -55,8 +55,13 @@ class PotentialFieldActionServer : public rclcpp::Node {
 
         double k_att_{5.0};
         double v_max_{1.0};
+        double w_max_{1.0};
         double done_translation_{0.05};
         double done_orientation_{0.1};
         double timeout_s_{5.0};
+        bool use_orientation_{true};
+
+        Eigen::Quaterniond q_robot_;
+        Eigen::Quaterniond q_target_;
 };
 

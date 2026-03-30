@@ -1,0 +1,23 @@
+[100%] Built target kinematic_controller
+-- Install configuration: ""
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/lib/kinematic_controller/kinematic_controller
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch/3d.launch.xml
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch/a4_with_redundancy.launch.xml
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch/a4_without_redundancy.launch.xml
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/launch/6d.launch.xml
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/ament_index/resource_index/package_run_dependencies/kinematic_controller
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/ament_index/resource_index/parent_prefix_path/kinematic_controller
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/environment/ament_prefix_path.sh
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/environment/path.sh
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/environment/path.dsv
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/local_setup.bash
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/local_setup.sh
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/local_setup.zsh
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/local_setup.dsv
+-- Installing: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/package.dsv
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/ament_index/resource_index/packages/kinematic_controller
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/cmake/kinematic_controllerConfig.cmake
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/cmake/kinematic_controllerConfig-version.cmake
+-- Up-to-date: /home/aidan/code-554/applied-robotics-w2026/install/kinematic_controller/share/kinematic_controller/package.xml

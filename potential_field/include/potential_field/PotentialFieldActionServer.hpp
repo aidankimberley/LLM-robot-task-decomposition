@@ -7,6 +7,8 @@
 
 #include <highlevel_interfaces/action/pose_command.hpp>
 
+#include <Eigen/Geometry>
+
 using PoseCommandAction = highlevel_interfaces::action::PoseCommand ; 
 using PoseCommandGoalHandle = rclcpp_action::ServerGoalHandle<PoseCommandAction>;
 
@@ -14,6 +16,9 @@ class PotentialFieldActionServer : public rclcpp::Node {
 
 	public:
 		PotentialFieldActionServer() ;
+        bool recieved_first_pose_ = false;
+        bool recieved_action_call_{false};
+        void homing();
 
 	private:
 
@@ -34,7 +39,6 @@ class PotentialFieldActionServer : public rclcpp::Node {
 
         void sub_callback(const geometry_msgs::msg::Pose::SharedPtr msg);
 
-        bool recieved_first_pose_ = false;
         double x_robot_;
         double y_robot_;
         double z_robot_;
@@ -53,8 +57,13 @@ class PotentialFieldActionServer : public rclcpp::Node {
 
         double k_att_{5.0};
         double v_max_{1.0};
+        double w_max_{1.0};
         double done_translation_{0.05};
         double done_orientation_{0.1};
         double timeout_s_{5.0};
+        bool use_orientation_{true};
+
+        Eigen::Quaterniond q_robot_;
+        Eigen::Quaterniond q_target_;
 };
 

@@ -1,0 +1,17 @@
+CMake Error at CMakeLists.txt:13 (find_package):
+  By not providing "Findkinematic_controller.cmake" in CMAKE_MODULE_PATH this
+  project has asked CMake to find a package configuration file provided by
+  "kinematic_controller", but CMake did not find one.
+
+  Could not find a package configuration file provided by
+  "kinematic_controller" with any of the following names:
+
+    kinematic_controllerConfig.cmake
+    kinematic_controller-config.cmake
+
+  Add the installation prefix of "kinematic_controller" to CMAKE_PREFIX_PATH
+  or set "kinematic_controller_DIR" to a directory containing one of the
+  above files.  If "kinematic_controller" provides a separate development
+  package or SDK, be sure it has been installed.
+
+

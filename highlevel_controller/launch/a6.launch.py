@@ -31,8 +31,9 @@ def generate_launch_description():
             {"target_twist_topic": "/gen3/reference/twist"},
             {"k_att": 5.0},
             {"done_translation": 0.05},
-            {"done_rotation": 0.01},
+            {"done_orientation": 0.01},
             {"timeout_s": 5.0},
+            {"use_orientation": arg_control_orientation},
             {"action_name": "/planner/move_pose"},
         ]
     )

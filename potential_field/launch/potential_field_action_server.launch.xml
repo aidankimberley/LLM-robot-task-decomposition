@@ -6,8 +6,8 @@
         <param name="target_twist_topic" value="/gen3/reference/twist" />
         <param name="k_att" value="5.0"/>
         <param name="done_translation" value="0.05"/>
-        <param name="done_rotation" value="0.01"/>
-        <param name="timeout_s" value="5.0"/>
+        <param name="done_orientation" value="0.01"/>
+        <param name="timeout_s" value="20.0"/>
         <param name="action_name" value="/planner/move_pose" />
     </node>
 </launch>
