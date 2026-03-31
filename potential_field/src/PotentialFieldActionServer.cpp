@@ -52,7 +52,8 @@ PotentialFieldActionServer::PotentialFieldActionServer()
   default_pose_target_.position.x = 0.5;
   default_pose_target_.position.y = 0.2;
   default_pose_target_.position.z = 0.5;
-  Eigen::Quaterniond quaternion_default_pose_target = Eigen::AngleAxisd(0, Eigen::Vector3d::UnitZ()) * Eigen::AngleAxisd(0, Eigen::Vector3d::UnitY()) * Eigen::AngleAxisd(0, Eigen::Vector3d::UnitX());
+  //Eigen::Quaterniond quaternion_default_pose_target = Eigen::AngleAxisd(0, Eigen::Vector3d::UnitZ()) * Eigen::AngleAxisd(0, Eigen::Vector3d::UnitY()) * Eigen::AngleAxisd(0, Eigen::Vector3d::UnitX());
+  Eigen::Quaterniond quaternion_default_pose_target = Eigen::Quaterniond::Identity();
   default_pose_target_.orientation.w = quaternion_default_pose_target.w();
   default_pose_target_.orientation.x = quaternion_default_pose_target.x();
   default_pose_target_.orientation.y = quaternion_default_pose_target.y();
@@ -70,10 +71,12 @@ void PotentialFieldActionServer::homing() {
   const Eigen::Vector3d x_robot_trans(x_robot_, y_robot_, z_robot_);
   Eigen::Vector3d omega = Eigen::Vector3d::Zero();
 
-  // Orientation error (radians), computed on SO(3) via quaternion difference
-  q_target_ = Eigen::AngleAxisd(default_pose_target_.orientation.z, Eigen::Vector3d::UnitZ()) *
-              Eigen::AngleAxisd(default_pose_target_.orientation.y, Eigen::Vector3d::UnitY()) *
-              Eigen::AngleAxisd(default_pose_target_.orientation.x, Eigen::Vector3d::UnitX());
+  q_target_ = Eigen::Quaterniond(
+    default_pose_target_.orientation.w,
+    default_pose_target_.orientation.x,
+    default_pose_target_.orientation.y,
+    default_pose_target_.orientation.z
+  );
   q_target_.normalize();
 
   Eigen::Quaterniond q_diff = q_target_ * q_robot_.conjugate();
@@ -145,7 +148,7 @@ rclcpp_action::GoalResponse PotentialFieldActionServer::handle_goal(
                          goal->x, goal->y, goal->z, goal->roll, goal->pitch, goal->yaw);
     return rclcpp_action::GoalResponse::REJECT;
   }
-  recieved_action_call_ = true;
+  active_action_call_ = true;
   return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
 }
 
@@ -153,6 +156,7 @@ rclcpp_action::CancelResponse PotentialFieldActionServer::handle_cancel(
     const std::shared_ptr<PoseCommandGoalHandle> goal_handle) {
   (void)goal_handle;
   RCLCPP_INFO(logger_, "Received cancel request");
+  active_action_call_ = false;
   return rclcpp_action::CancelResponse::ACCEPT;
 }
 
@@ -177,14 +181,27 @@ void PotentialFieldActionServer::execute_action(
   roll_target_ = goal->roll;
   pitch_target_ = goal->pitch;
   yaw_target_ = goal->yaw;
+
+  default_pose_target_.position.x = x_target_;
+  default_pose_target_.position.y = y_target_;
+  default_pose_target_.position.z = z_target_;
+  Eigen::Quaterniond quaternion_default_pose_target = Eigen::AngleAxisd(yaw_target_, Eigen::Vector3d::UnitZ()) *
+                  Eigen::AngleAxisd(pitch_target_, Eigen::Vector3d::UnitY()) *
+                  Eigen::AngleAxisd(roll_target_, Eigen::Vector3d::UnitX());
+  default_pose_target_.orientation.w = quaternion_default_pose_target.w();
+  default_pose_target_.orientation.x = quaternion_default_pose_target.x();
+  default_pose_target_.orientation.y = quaternion_default_pose_target.y();
+  default_pose_target_.orientation.z = quaternion_default_pose_target.z();
   
   rclcpp::Rate rate(500.0);
 
   while (rclcpp::ok()) {
     if (goal_handle->is_canceling()) {
-      reference_twist_publisher_->publish(geometry_msgs::msg::Twist());
+      // reference_twist_publisher_->publish(geometry_msgs::msg::Twist());
+      active_action_call_ = false;
       pose_command_response_->success = false;
       pose_command_response_->message = "Goal canceled";
+
       goal_handle->canceled(pose_command_response_);
       return;
     }
@@ -192,10 +209,11 @@ void PotentialFieldActionServer::execute_action(
     const double elapsed = (this->now() - start_time).seconds();
     pose_command_feedback_->time_elapsed = elapsed;
     if (elapsed > timeout_s_) {
-      reference_twist_publisher_->publish(geometry_msgs::msg::Twist());//publishes zero velocity
+      //reference_twist_publisher_->publish(geometry_msgs::msg::Twist());//publishes zero velocity
       pose_command_response_->success = false;
       pose_command_response_->message = "Timed out";
       goal_handle->abort(pose_command_response_);
+      active_action_call_ = false;
       return;
     }
 
@@ -206,30 +224,29 @@ void PotentialFieldActionServer::execute_action(
 
     double orient_err = 0.0;
     Eigen::Vector3d omega = Eigen::Vector3d::Zero();
-    if (use_orientation_) {
-      // Orientation error (radians), computed on SO(3) via quaternion difference
-      q_target_ = Eigen::AngleAxisd(yaw_target_, Eigen::Vector3d::UnitZ()) *
-                  Eigen::AngleAxisd(pitch_target_, Eigen::Vector3d::UnitY()) *
-                  Eigen::AngleAxisd(roll_target_, Eigen::Vector3d::UnitX());
-      q_target_.normalize();
+    // Orientation error (radians), computed on SO(3) via quaternion difference
+    q_target_ = Eigen::AngleAxisd(yaw_target_, Eigen::Vector3d::UnitZ()) *
+                Eigen::AngleAxisd(pitch_target_, Eigen::Vector3d::UnitY()) *
+                Eigen::AngleAxisd(roll_target_, Eigen::Vector3d::UnitX());
+    q_target_.normalize();
 
-      Eigen::Quaterniond q_diff = q_target_ * q_robot_.conjugate();
-      q_diff.normalize();
-      if (q_diff.w() < 0.0) {
-        q_diff.coeffs() *= -1.0;
-      }
-      
-      orient_err = 2.0 * acos(abs(q_robot_.dot(q_target_)));
-
-      // const double w = std::clamp(std::abs(q_diff.w()), 0.0, 1.0);
-      // orient_err = 2.0 * std::acos(w);
-
-      omega = 2.0 * k_att_ * Eigen::Vector3d(q_diff.x(), q_diff.y(), q_diff.z());
-      const double w_norm = omega.norm();
-      if (w_norm > w_max_ && w_norm > 0.0) {
-        omega = (omega / w_norm) * w_max_;
-      }
+    Eigen::Quaterniond q_diff = q_target_ * q_robot_.conjugate();
+    q_diff.normalize();
+    if (q_diff.w() < 0.0) {
+      q_diff.coeffs() *= -1.0;
     }
+    
+    orient_err = 2.0 * acos(abs(q_robot_.dot(q_target_)));
+
+    // const double w = std::clamp(std::abs(q_diff.w()), 0.0, 1.0);
+    // orient_err = 2.0 * std::acos(w);
+
+    omega = 2.0 * k_att_ * Eigen::Vector3d(q_diff.x(), q_diff.y(), q_diff.z());
+    const double w_norm = omega.norm();
+    if (w_norm > w_max_ && w_norm > 0.0) {
+      omega = (omega / w_norm) * w_max_;
+    }
+    
 
     // const Eigen::Vector3d x_robot_rpy(roll_robot_, pitch_robot_, yaw_robot_);
 
@@ -245,12 +262,13 @@ void PotentialFieldActionServer::execute_action(
     }
     RCLCPP_INFO(logger_, "orientation error: %f", orient_err);
     if (trans_err < done_translation_ && orient_err < done_orientation_) {
-      velocity_msg_ = geometry_msgs::msg::Twist(); //initializes to zero
-      reference_twist_publisher_->publish(velocity_msg_);
+      // velocity_msg_ = geometry_msgs::msg::Twist(); //initializes to zero
+      // reference_twist_publisher_->publish(velocity_msg_);
 
       pose_command_response_->success = true;
       pose_command_response_->message = "Reached target";
       goal_handle->succeed(pose_command_response_);
+      active_action_call_ = false;
       return;
     }
 

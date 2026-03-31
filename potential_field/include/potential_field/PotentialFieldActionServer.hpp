@@ -17,7 +17,7 @@ class PotentialFieldActionServer : public rclcpp::Node {
 	public:
 		PotentialFieldActionServer() ;
         bool recieved_first_pose_ = false;
-        bool recieved_action_call_{false};
+        bool active_action_call_{false};
         void homing();
 
 	private:

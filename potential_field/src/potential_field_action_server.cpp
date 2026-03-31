@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     while ( rclcpp::ok() ){
         
         try {
-            if (node_handle->recieved_first_pose_ && !node_handle->recieved_action_call_) {
+            if (node_handle->recieved_first_pose_ && !node_handle->active_action_call_) {
                 node_handle->homing();
             }
             // call all the callbacks waiting to be called 

@@ -155,8 +155,7 @@ void PotentialField2D::update(){
         //check if any joints are moving too fast:
         for (int i = 0; i < (int)maximum_joint_velocity_.size(); i++){
             if (x_dot_unscaled(i) > maximum_joint_velocity_(i)){
-                x_dot(i) = maximum_joint_velocity_(i);
-                
+                x_dot(i) = maximum_joint_velocity_(i);             
             }
             else if (x_dot_unscaled(i) < -maximum_joint_velocity_(i)){
                 x_dot(i) = -maximum_joint_velocity_(i);

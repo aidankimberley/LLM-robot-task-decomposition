@@ -9,7 +9,7 @@
             value="$(find-pkg-share kortex_description)/robots/gen3.urdf"/>
 
         <param name="use_sim_time" value="true"/>
-        <param name="with_redundancy" value="false"/>
+        <param name="with_redundancy" value="true"/>
         <param name="use_6D" value="true"/>
 
         <param name="joint_state_topic" value="/joint_states"/>

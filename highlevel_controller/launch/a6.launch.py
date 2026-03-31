@@ -19,23 +19,29 @@ def generate_launch_description():
     arg_control_orientation = LaunchConfiguration('control_orientation')
 
 
-    potential_field_action_server = Node(
-        package="potential_field",
-        executable="potential_field_action_server",
-        name="potential_field_action_server",
-        #arguments=["--ros-args", "--log-level", "debug"],
-        parameters=[
-            {"use_sim_time": True},
-            {"with_redundancy": True},
-            {"robot_pose_topic": "/gen3/feedback/pose"},
-            {"target_twist_topic": "/gen3/reference/twist"},
-            {"k_att": 5.0},
-            {"done_translation": 0.05},
-            {"done_orientation": 0.01},
-            {"timeout_s": 5.0},
-            {"use_orientation": arg_control_orientation},
-            {"action_name": "/planner/move_pose"},
-        ]
+    # potential_field_action_server = Node(
+    #     package="potential_field",
+    #     executable="potential_field_action_server",
+    #     name="potential_field_action_server",
+    #     #arguments=["--ros-args", "--log-level", "debug"],
+    #     parameters=[
+    #         {"use_sim_time": True},
+    #         {"with_redundancy": True},
+    #         {"robot_pose_topic": "/gen3/feedback/pose"},
+    #         {"target_twist_topic": "/gen3/reference/twist"},
+    #         {"k_att": 5.0},
+    #         {"done_translation": 0.05},
+    #         {"done_orientation": 0.01},
+    #         {"timeout_s": 5.0},
+    #         {"use_orientation": arg_control_orientation},
+    #         {"action_name": "/planner/move_pose"},
+    #     ]
+    # )
+    potential_field_action_server = IncludeLaunchDescription(
+        AnyLaunchDescriptionSource(
+            PathJoinSubstitution([FindPackageShare("potential_field"), "launch", "potential_field_action_server.launch.xml"])
+        ),
+        condition=IfCondition(arg_control_orientation),
     )
 
     kinematic_controller_6d = IncludeLaunchDescription(

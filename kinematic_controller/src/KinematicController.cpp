@@ -38,7 +38,6 @@ KinematicController::KinematicController(const std::string& name) : rclcpp::Node
         this->urdf_file_name_ = this->get_parameter("urdf_file_name").as_string();
         RCLCPP_INFO(this->get_logger(), "urdf_file_name: %s", urdf_file_name_.c_str());
     }
-
     joint_state_subscriber_ = this->create_subscription<sensor_msgs::msg::JointState>(joint_state_topic, 10, 
         std::bind(&KinematicController::joint_state_callback, this, _1));
     reference_twist_subscriber_ = this->create_subscription<geometry_msgs::msg::Twist>(reference_twist_topic,10,
@@ -49,9 +48,7 @@ KinematicController::KinematicController(const std::string& name) : rclcpp::Node
     end_pose_publisher_ = this->create_publisher<geometry_msgs::msg::Pose>(end_pose_topic, 10);
     end_twist_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>(end_twist_topic, 10);
     command_position_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>(joint_velocity_command_topic, 10);
-
     
-
     //load the model
     pinocchio::urdf::buildModel(urdf_file_name_, model_, false);//set true to display details
     data_ = pinocchio::Data(model_);
