@@ -17,6 +17,7 @@
   <!-- Runtime dependencies for launch file -->
   <exec_depend>potential_field</exec_depend>
   <exec_depend>kortex_description</exec_depend>
+  <exec_depend>kinematic_controller</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
