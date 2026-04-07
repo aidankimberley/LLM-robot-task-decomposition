@@ -11,6 +11,7 @@ int main(int argc, char** argv){
     rclcpp::Rate loop_rate(500); //hz
     while(rclcpp::ok()){
         rclcpp::spin_some(node);
+        node->SendCommands();
         loop_rate.sleep();
     }
     rclcpp::shutdown();

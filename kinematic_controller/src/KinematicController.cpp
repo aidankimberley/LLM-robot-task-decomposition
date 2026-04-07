@@ -59,21 +59,7 @@ KinematicController::KinematicController(const std::string& name) : rclcpp::Node
     ee_frame_id_ = model_.getFrameId("end_effector_link");
 }
 
-void KinematicController::joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg){
-    RCLCPP_DEBUG(this->get_logger(), "Joint state callback received");
-    if (static_cast<Eigen::Index>(msg->position.size()) != model_.nq ||
-        static_cast<Eigen::Index>(msg->velocity.size()) != model_.nv) {
-        RCLCPP_WARN_THROTTLE(
-            this->get_logger(), *this->get_clock(), 2000,
-            "JointState size mismatch: position %zu velocity %zu (expected nq=%d nv=%d). "
-            "Use a URDF whose controlled DOF match /joint_states.",
-            msg->position.size(), msg->velocity.size(), static_cast<int>(model_.nq),
-            static_cast<int>(model_.nv));
-        return;
-    }
-    q_ = Eigen::Map<const Eigen::VectorXd>(msg->position.data(), model_.nq);
-    v_ = Eigen::Map<const Eigen::VectorXd>(msg->velocity.data(), model_.nv);
-
+void KinematicController::SendCommands(){
     pinocchio::forwardKinematics(model_, data_, q_, v_);
     pinocchio::computeJointJacobians(model_, data_, q_);
     pinocchio::updateFramePlacements(model_, data_);
@@ -109,11 +95,50 @@ void KinematicController::joint_state_callback(const sensor_msgs::msg::JointStat
 
     end_pose_publisher_->publish(end_pose_);
     end_twist_publisher_->publish(end_twist_);
-
-    // RCLCPP_DEBUG(this->get_logger(), "End effector pose: %f, %f, %f", end_pose_.position.x, end_pose_.position.y, end_pose_.position.z);
-    // RCLCPP_DEBUG(this->get_logger(), "End effector twist: %f, %f, %f", end_twist_.linear.x, end_twist_.linear.y, end_twist_.linear.z);
-    // RCLCPP_DEBUG(this->get_logger(), "End effector twist: %f, %f, %f", end_twist_.angular.x, end_twist_.angular.y, end_twist_.angular.z);
 }
+
+void KinematicController::joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg) {
+    if (msg->name.size() != static_cast<size_t>(model_.nq) ||
+        msg->position.size() != msg->name.size() ||
+        msg->velocity.size() != msg->name.size()) {
+        RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
+            "JointState size mismatch");
+        return;
+    }
+    for (size_t i = 0; i < msg->name.size(); ++i) {
+        if (!model_.existJointName(msg->name[i])) {
+            continue;
+        }
+        // Pinocchio joint IDs start at 1 (0 is "universe"); index into q/v is id - 1
+        const auto jid = model_.getJointId(msg->name[i]);
+        const auto idx = model_.idx_qs[jid];   // start index in q for this joint
+        q_(idx) = msg->position[i];
+        const auto vidx = model_.idx_vs[jid];   // start index in v for this joint
+        v_(vidx) = msg->velocity[i];
+    }
+}
+
+// void KinematicController::joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg){
+//     RCLCPP_DEBUG(this->get_logger(), "Joint state callback received");
+//     if (static_cast<Eigen::Index>(msg->position.size()) != model_.nq ||
+//         static_cast<Eigen::Index>(msg->velocity.size()) != model_.nv) {
+//         RCLCPP_WARN_THROTTLE(
+//             this->get_logger(), *this->get_clock(), 2000,
+//             "JointState size mismatch: position %zu velocity %zu (expected nq=%d nv=%d). "
+//             "Use a URDF whose controlled DOF match /joint_states.",
+//             msg->position.size(), msg->velocity.size(), static_cast<int>(model_.nq),
+//             static_cast<int>(model_.nv));
+//         return;
+//     }
+//     q_ = Eigen::Map<const Eigen::VectorXd>(msg->position.data(), model_.nq);
+//     v_ = Eigen::Map<const Eigen::VectorXd>(msg->velocity.data(), model_.nv);
+
+
+
+//     // RCLCPP_DEBUG(this->get_logger(), "End effector pose: %f, %f, %f", end_pose_.position.x, end_pose_.position.y, end_pose_.position.z);
+//     // RCLCPP_DEBUG(this->get_logger(), "End effector twist: %f, %f, %f", end_twist_.linear.x, end_twist_.linear.y, end_twist_.linear.z);
+//     // RCLCPP_DEBUG(this->get_logger(), "End effector twist: %f, %f, %f", end_twist_.angular.x, end_twist_.angular.y, end_twist_.angular.z);
+// }
 
 void KinematicController::reference_homing_velocity_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg){
     RCLCPP_DEBUG(this->get_logger(), "Reference homing velocity callback received");

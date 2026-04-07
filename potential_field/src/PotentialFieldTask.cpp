@@ -7,8 +7,6 @@
 #include <Eigen/Dense>
 
 //Potential Field just for the end effector
-
-
 using Move3d = highlevel_interfaces::srv::Move3d;
 //PUBLIC
 PotentialFieldTask::PotentialFieldTask(const std::string& name): rclcpp::Node(name){

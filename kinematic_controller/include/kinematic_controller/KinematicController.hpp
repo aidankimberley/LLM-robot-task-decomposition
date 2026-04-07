@@ -14,6 +14,7 @@ class KinematicController : public rclcpp::Node {
     public:
         //constructor
         KinematicController(const std::string& name);
+        void SendCommands();
 
     private:
 
