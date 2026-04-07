@@ -56,7 +56,8 @@ KinematicController::KinematicController(const std::string& name) : rclcpp::Node
     v_ = Eigen::VectorXd::Zero(model_.nv);
     reference_homing_velocity_ = Eigen::VectorXd::Zero(model_.nv);
     jacobian_ = Eigen::MatrixXd::Zero(6, model_.nv);
-    ee_frame_id_ = model_.getFrameId("end_effector_link");
+    //ee_frame_id_ = model_.getFrameId("end_effector_link");
+    ee_frame_id_ = model_.getFrameId("bracelet_link");
 }
 
 void KinematicController::SendCommands(){
