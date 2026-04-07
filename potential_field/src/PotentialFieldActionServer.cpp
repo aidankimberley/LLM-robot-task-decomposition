@@ -65,7 +65,7 @@ PotentialFieldActionServer::PotentialFieldActionServer()
 }
 
 void PotentialFieldActionServer::homing() {
-  RCLCPP_INFO(this->get_logger(), "Homing...");
+  //RCLCPP_INFO(this->get_logger(), "Homing...");
   // Translation error (meters)
   const Eigen::Vector3d x_goal_trans(default_pose_target_.position.x, default_pose_target_.position.y, default_pose_target_.position.z);
   const Eigen::Vector3d x_robot_trans(x_robot_, y_robot_, z_robot_);
@@ -254,13 +254,13 @@ void PotentialFieldActionServer::execute_action(
     pose_command_feedback_->distance_translation = trans_err;
     pose_command_feedback_->distance_orientation = orient_err;
     goal_handle->publish_feedback(pose_command_feedback_);
-    if (trans_err < done_translation_){
-      RCLCPP_INFO(logger_, "Translation error: %f", trans_err);
-    }
-    if (orient_err < done_orientation_){
-      RCLCPP_INFO(logger_, "Orientation error: %f", orient_err);
-    }
-    RCLCPP_INFO(logger_, "orientation error: %f", orient_err);
+    // if (trans_err < done_translation_){
+    //   RCLCPP_INFO(logger_, "Translation error: %f", trans_err);
+    // }
+    // if (orient_err < done_orientation_){
+    //   RCLCPP_INFO(logger_, "Orientation error: %f", orient_err);
+    // }
+    // RCLCPP_INFO(logger_, "orientation error: %f", orient_err);
     if (trans_err < done_translation_ && orient_err < done_orientation_) {
       // velocity_msg_ = geometry_msgs::msg::Twist(); //initializes to zero
       // reference_twist_publisher_->publish(velocity_msg_);

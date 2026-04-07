@@ -218,12 +218,6 @@ void PotentialField2D::update(){
     }
 }
 
-//PRIVATE
-void PotentialField2D::sub_callback(const geometry_msgs::msg::PoseArray::SharedPtr msg){
-    x_robot_ = msg->poses[5].position.x;
-    y_robot_ = msg->poses[5].position.y;
-    recieved_first_pose_ = true;
-}
 //void PotentialField2D::client_callback(const )
 // void PotentialField2D::server_callback(const std::shared_ptr<Move2d::Request> request,
 //     std::shared_ptr<Move2d::Response> response){
