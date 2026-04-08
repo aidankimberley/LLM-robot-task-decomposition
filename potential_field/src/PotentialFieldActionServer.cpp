@@ -208,7 +208,7 @@ void PotentialFieldActionServer::execute_action(
 
     const double elapsed = (this->now() - start_time).seconds();
     const double elapsed_ms = (this->now() - start_time).nanoseconds()/1e6;
-    pose_command_feedback_->time_elapsed = elapsed_ms;
+    pose_command_feedback_->time_elapsed = elapsed;
     if (elapsed > timeout_s_) {
       //reference_twist_publisher_->publish(geometry_msgs::msg::Twist());//publishes zero velocity
       pose_command_response_->success = false;
