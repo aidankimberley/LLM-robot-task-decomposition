@@ -7,7 +7,7 @@
         <param name="k_att" value="5.0"/>
         <param name="done_translation" value="0.05"/>
         <param name="done_orientation" value="0.1"/>
-        <param name="timeout_s" value="4.0"/>
+        <param name="timeout_s" value="5.0"/>
         <param name="action_name" value="/planner/move_pose" />
         <param name="maximum_angular_velocity" value="1.0"/>
     </node>
