@@ -84,8 +84,8 @@ void KinematicController::SendCommands(){
     end_pose_.orientation.z = quat.z();
     end_pose_.orientation.w = quat.w();
 
-    RCLCPP_INFO(this->get_logger(), "End effector pose: %f, %f, %f", end_pose_.position.x, end_pose_.position.y, end_pose_.position.z);
-    RCLCPP_INFO(this->get_logger(), "End effector orientation: %f, %f, %f, %f", end_pose_.orientation.x, end_pose_.orientation.y, end_pose_.orientation.z, end_pose_.orientation.w);
+    // RCLCPP_INFO(this->get_logger(), "End effector pose: %f, %f, %f", end_pose_.position.x, end_pose_.position.y, end_pose_.position.z);
+    // RCLCPP_INFO(this->get_logger(), "End effector orientation: %f, %f, %f, %f", end_pose_.orientation.x, end_pose_.orientation.y, end_pose_.orientation.z, end_pose_.orientation.w);
 
     end_twist_.linear.x = twist_vector[0];
     end_twist_.linear.y = twist_vector[1];

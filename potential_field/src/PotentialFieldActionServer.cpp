@@ -201,7 +201,6 @@ void PotentialFieldActionServer::execute_action(
       active_action_call_ = false;
       pose_command_response_->success = false;
       pose_command_response_->message = "Goal canceled";
-
       goal_handle->canceled(pose_command_response_);
       return;
     }
@@ -209,6 +208,7 @@ void PotentialFieldActionServer::execute_action(
     const double elapsed = (this->now() - start_time).seconds();
     const double elapsed_ms = (this->now() - start_time).nanoseconds()/1e6;
     pose_command_feedback_->time_elapsed = elapsed;
+    RCLCPP_INFO(this->get_logger(), "Time elapsed: %f", elapsed);
     if (elapsed > timeout_s_) {
       //reference_twist_publisher_->publish(geometry_msgs::msg::Twist());//publishes zero velocity
       pose_command_response_->success = false;
