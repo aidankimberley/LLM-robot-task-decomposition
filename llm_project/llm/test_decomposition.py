@@ -52,22 +52,25 @@ def main():
     2. After gripping, ALWAYS move to neutral_pose before moving to the destination.
     3. When placing, move ABOVE the destination before opening the gripper.
     4. Never go to the destination before picking the object up.
-    5. If only pushing (no grip), move to object then move to destination — no gripper steps.
-    """
+    5. When going to the side of an object, move the neutral_pose, then "above" the object, then to the side.
+    5. If contains keyword PUSH or PULL read the following else ignore: (no grip), move to the opposite side of the object that you will be pushing or pulling, then move in the direction of the push or pull.
 
+    """
+#first close gripper, then
         
     EXAMPLE_1 = """
     EXAMPLE:
     Instruction: push the cube to the left
     Output JSON:
     {
-    "step_1": {"action": "move_pose",    "object_a": null,   "object_b": "cube", "spatial_relation": null},
-    "step_2": {"action": "move_pose",    "object_a": null,   "object_b": "cube", "spatial_relation": "left_of"}
+    "step 1": {"action": "close_gripper", "object_a": null,   "object_b": null, "spatial_relation": null},
+    "step_2": {"action": "move_pose",    "object_a": null,   "object_b": "cube", "spatial_relation": "right_of"},
+    "step_3": {"action": "move_pose",    "object_a": null,   "object_b": "cube", "spatial_relation": "left_of"}
     }"""
 
     EXAMPLE_2 = """
     EXAMPLE:
-    Instruction: put the cube in the cup
+    Instruction: pick the cube up and place it in the cup
     Output JSON:
     {
     "step_1": {"action": "move_pose",     "object_a": null,   "object_b": "cube",         "spatial_relation": null},
@@ -79,18 +82,29 @@ def main():
 
     EXAMPLE_3 = """
     EXAMPLE:
-    Instruction: move the cube to the right of the cup
+    Instruction: pick the cube up and place it to the right of the cup
     Output JSON:
     {
     "step_1": {"action": "move_pose",     "object_a": null,   "object_b": "cube",         "spatial_relation": null},
     "step_2": {"action": "close_gripper", "object_a": "cube", "object_b": null,            "spatial_relation": null},
     "step_3": {"action": "move_pose",     "object_a": "cube", "object_b": "neutral_pose",  "spatial_relation": null},
-    "step_4": {"action": "move_pose",     "object_a": "cube", "object_b": "cup",           "spatial_relation": "right_of"},
-    "step_5": {"action": "open_gripper",  "object_a": "cube", "object_b": "cup",           "spatial_relation": null}
+    "step_4": {"action": "move_pose",     "object_a": "cube", "object_b": "cup",           "spatial_relation": "above"},
+    "step_5": {"action": "move_pose",     "object_a": "cube", "object_b": "cup",           "spatial_relation": "right_of"},
+    "step_6": {"action": "open_gripper",  "object_a": "cube", "object_b": "cup",           "spatial_relation": null}
     }"""
 
-    context = SYSTEM_BASE + EXAMPLE_1 + EXAMPLE_2 + EXAMPLE_3
-    
+    EXAMPLE_4 = """
+    EXAMPLE:
+    Instruction: pick up the cube
+    Output JSON:
+    {
+    "step_1": {"action": "move_pose",     "object_a": null,   "object_b": "cube",         "spatial_relation": null},
+    "step_2": {"action": "close_gripper", "object_a": "cube", "object_b": null,            "spatial_relation": null},
+    "step_3": {"action": "move_pose",    "object_a": "cube", "object_b": "cube",          "spatial_relation": "above"}
+    }
+    """
+    context = SYSTEM_BASE  + EXAMPLE_2 + EXAMPLE_3 +EXAMPLE_4
+    #context = SYSTEM_BASE + EXAMPLE_3 + EXAMPLE_2
     query = f"Instruction: {instruction}\nOutput JSON:"
 
     print(f"\nExecuting query for instruction: '{instruction}'")

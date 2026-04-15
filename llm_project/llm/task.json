@@ -24,6 +24,12 @@
     "spatial_relation": "above"
   },
   "step_5": {
+    "action": "move_pose",
+    "object_a": "cube",
+    "object_b": "cup",
+    "spatial_relation": "left_of"
+  },
+  "step_6": {
     "action": "open_gripper",
     "object_a": "cube",
     "object_b": "cup",

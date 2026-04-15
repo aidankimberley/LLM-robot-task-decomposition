@@ -30,7 +30,7 @@ DEFAULT_GRIPPER_ACTION = "/gripper_controller/gripper_cmd"
 INTER_ACTION_SLEEP_S = 0.5
 
 # Wait before doing anything (seconds).
-STARTUP_SLEEP_S = 10.0
+STARTUP_SLEEP_S = 1.0
 
 # --- Gripper joint command (parallel gripper; tune to your URDF) ---
 GRIPPER_JOINTS = ["right_finger_bottom_joint"]
@@ -80,8 +80,8 @@ _PLACE_DZ = 0.10
 # Spatial offsets: base frame has +x = forward, +y = left (REP-103 style).
 _ABOVE_EXTRA_DZ = 0.10  # added on top of approach when relation is "above"
 _OFFSET_FRONT = 0.12  # +x = in_front_of
-_OFFSET_SIDE = 0.10  # +y = left_of, −y = right_of
-_CLEARANCE_DZ = 0.05  # small +z for lateral/front/behind goals to clear the anchor
+_OFFSET_SIDE = 0.15  # +y = left_of, −y = right_of
+_CLEARANCE_DZ = 0.06  # small +z for lateral/front/behind goals to clear the anchor
 
 
 def _normalize_spatial_relation(rel: Any) -> str:
