@@ -51,13 +51,18 @@ KinematicController::KinematicController(const std::string& name) : rclcpp::Node
     
     //load the model
     pinocchio::urdf::buildModel(urdf_file_name_, model_, false);//set true to display details
+
+    // std::string urdf_string;
+    // this->get_parameter("robot_description", urdf_string);
+    // pinocchio::urdf::buildModelFromXML(urdf_string, model_);
+
     data_ = pinocchio::Data(model_);
     q_ = Eigen::VectorXd::Zero(model_.nq);
     v_ = Eigen::VectorXd::Zero(model_.nv);
     reference_homing_velocity_ = Eigen::VectorXd::Zero(model_.nv);
     jacobian_ = Eigen::MatrixXd::Zero(6, model_.nv);
-    //ee_frame_id_ = model_.getFrameId("end_effector_link");
-    ee_frame_id_ = model_.getFrameId("bracelet_link") - 1;
+    ee_frame_id_ = model_.getFrameId("end_effector_link") - 1;
+    //ee_frame_id_ = model_.getFrameId("bracelet_link") - 1;
 }
 
 void KinematicController::SendCommands(){
@@ -99,14 +104,14 @@ void KinematicController::SendCommands(){
 }
 
 void KinematicController::joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg) {
-    if (msg->name.size() != static_cast<size_t>(model_.nq) ||
-        msg->position.size() != msg->name.size() ||
-        msg->velocity.size() != msg->name.size()) {
-        RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
-            "JointState size mismatch");
-        return;
-    }
-    for (size_t i = 0; i < msg->name.size(); ++i) {
+    // if (msg->name.size() != static_cast<size_t>(model_.nq) ||
+    //     msg->position.size() != msg->name.size() ||
+    //     msg->velocity.size() != msg->name.size()) {
+    //     RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
+    //         "JointState size mismatch");
+    //     return;
+    // }
+    for (size_t i = 0; i < msg->name.size()-1; ++i) {
         if (!model_.existJointName(msg->name[i])) {
             continue;
         }

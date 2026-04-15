@@ -1,0 +1,32 @@
+{
+  "step_1": {
+    "action": "move_pose",
+    "object_a": null,
+    "object_b": "cube",
+    "spatial_relation": null
+  },
+  "step_2": {
+    "action": "close_gripper",
+    "object_a": "cube",
+    "object_b": null,
+    "spatial_relation": null
+  },
+  "step_3": {
+    "action": "move_pose",
+    "object_a": "cube",
+    "object_b": "neutral_pose",
+    "spatial_relation": null
+  },
+  "step_4": {
+    "action": "move_pose",
+    "object_a": "cube",
+    "object_b": "cup",
+    "spatial_relation": "above"
+  },
+  "step_5": {
+    "action": "open_gripper",
+    "object_a": "cube",
+    "object_b": "cup",
+    "spatial_relation": null
+  }
+}

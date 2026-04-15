@@ -1,0 +1,8 @@
+{
+  "step_1": {
+    "action": "move_pose",
+    "object_a": null,
+    "object_b": "cup",
+    "spatial_relation": null
+  }
+}

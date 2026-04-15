@@ -40,10 +40,7 @@ PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
     done_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/planner/done", 1);
 
     reference_joint_pose_publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("/gen3/reference/position", 1);
-    
-    // Initialize velocity message size (7 joints)
-    joint_velocity_msg_.data.resize(7);
-    reference_joint_pose_.data.resize(7);
+    // Will be set after parameters are declared/read.
     //velocity_msg_.data.resize(2);
     
     if (!readParameters()){
@@ -59,8 +56,9 @@ PotentialField2D::PotentialField2D(const std::string& name): rclcpp::Node(name){
 bool PotentialField2D::readParameters(){
     RCLCPP_DEBUG(this->get_logger(), "Read Parameters Called");
     double k_att_default = 5.0;
-    std::vector<double> maximum_joint_velocity_default = {1.0,1.0,1.0,1.0,1.0,1.0,1.0};
-    std::vector<double> default_joint_position_default = {0.0,1.54,0.0,1.54,0.0,1.54,0.0};
+    // Defaults are for Gen3 + gripper (8 joints). Launch files may override.
+    std::vector<double> maximum_joint_velocity_default = {1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0};
+    std::vector<double> default_joint_position_default = {0.0,1.54,0.0,1.54,0.0,1.54,0.0,0.0};
     double done_threshold_default = 0.05;
 
     this->declare_parameter<double>("k_att", k_att_default);
@@ -68,7 +66,7 @@ bool PotentialField2D::readParameters(){
     this->declare_parameter<std::vector<double>>("default_joint_position", default_joint_position_default);
     this->declare_parameter<double>("done_threshold", done_threshold_default);
   
-    dt_ = 1 / 500;
+    dt_ = 1.0 / 500.0;
 
     if (!this->get_parameter("k_att", k_att_)){
         RCLCPP_WARN(this->get_logger(), "Failed to get parameter k_att, setting to default value");
@@ -81,14 +79,16 @@ bool PotentialField2D::readParameters(){
     if (!this->get_parameter("maximum_joint_velocity", maximum_joint_velocity_vec_)){
         RCLCPP_WARN(this->get_logger(), "Failed to get parameter maximum_joint_velocity, setting to default value");
         maximum_joint_velocity_vec_ = maximum_joint_velocity_default;
-        maximum_joint_velocity_ = Eigen::VectorXd::Zero(7);
-        for (int i = 0; i < 7; i++){
-            maximum_joint_velocity_[i] = maximum_joint_velocity_default.at(i);
+        num_joints_ = static_cast<int>(maximum_joint_velocity_vec_.size());
+        maximum_joint_velocity_ = Eigen::VectorXd::Zero(num_joints_);
+        for (int i = 0; i < num_joints_; i++){
+            maximum_joint_velocity_[i] = maximum_joint_velocity_vec_.at(i);
         }
     }
     else{
         RCLCPP_INFO(this->get_logger(), "Got max joint vel reading");
         int param_size = maximum_joint_velocity_vec_.size();
+        num_joints_ = param_size;
         maximum_joint_velocity_ = Eigen::VectorXd::Zero(param_size);
         for (int i = 0; i < param_size; i++){
             maximum_joint_velocity_[i] = maximum_joint_velocity_vec_.at(i);
@@ -97,17 +97,34 @@ bool PotentialField2D::readParameters(){
         RCLCPP_INFO_STREAM(this->get_logger(), "maximum_joint_velocity (type: " << typeid(maximum_joint_velocity_).name() << "): " << maximum_joint_velocity_.transpose());
     }
 
+    // Now that num_joints_ is known, size outgoing messages consistently.
+    joint_velocity_msg_.data.resize(num_joints_);
+    reference_joint_pose_.data.resize(num_joints_);
+
 
     if (!this->get_parameter("default_joint_position", default_joint_position_vec_)){
         RCLCPP_WARN(this->get_logger(), "Failed to get parameter default_joint_position, setting to default value");
         default_joint_position_vec_ = default_joint_position_default;
-        default_joint_position_ = Eigen::VectorXd::Zero(7);
-        for (int i = 0; i < 7; i++){
-            default_joint_position_[i] = default_joint_position_default.at(i);
+        if (static_cast<int>(default_joint_position_vec_.size()) != num_joints_) {
+            RCLCPP_WARN(this->get_logger(),
+                        "default_joint_position size (%zu) != num_joints (%d); resizing to match",
+                        default_joint_position_vec_.size(), num_joints_);
+            default_joint_position_vec_.resize(num_joints_, 0.0);
+        }
+        default_joint_position_ = Eigen::VectorXd::Zero(num_joints_);
+        for (int i = 0; i < num_joints_; i++){
+            default_joint_position_[i] = default_joint_position_vec_.at(i);
         }
     }
     else{
         int param_size2 = default_joint_position_vec_.size();
+        if (param_size2 != num_joints_) {
+            RCLCPP_WARN(this->get_logger(),
+                        "default_joint_position size (%d) != num_joints (%d); resizing to match",
+                        param_size2, num_joints_);
+            default_joint_position_vec_.resize(num_joints_, 0.0);
+            param_size2 = num_joints_;
+        }
         default_joint_position_ = Eigen::VectorXd::Zero(param_size2);
         for (int i = 0; i < param_size2; i++){
             default_joint_position_[i] = default_joint_position_vec_.at(i);
@@ -252,7 +269,16 @@ void PotentialField2D::homing_callback(const std::shared_ptr<Trigger::Request> r
 void PotentialField2D::joint_callback(const sensor_msgs::msg::JointState::SharedPtr msg){
     //RCLCPP_DEBUG(this->get_logger(), "Recieved Joint State");
     recieved_first_pose_ = true;
-    joint_positions_ = msg->position; //float64 array
+    // Assign first 7 elements of position to joint_positions_
+    if (msg->position.size() >= 8) {
+        joint_positions_.assign(msg->position.begin(), msg->position.begin() + 7);
+        gripper_position_ = msg->position[7];
+    } else {
+        // Handle case where message does not have enough elements
+        joint_positions_.clear();
+        gripper_position_ = 0.0;
+        RCLCPP_WARN(this->get_logger(), "JointState position array too short: got %zu, expected at least 8", msg->position.size());
+    }
     //could hypothetically extract name, vel, pos, and effort from the msg
 }
 

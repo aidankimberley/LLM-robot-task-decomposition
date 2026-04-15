@@ -17,7 +17,7 @@ PotentialFieldActionServer::PotentialFieldActionServer()
   this->declare_parameter("maximum_angular_velocity", 1.0);
   this->declare_parameter("done_translation", 0.05);
   this->declare_parameter("done_orientation", 0.1);
-  this->declare_parameter("timeout_s", 5.0);
+  this->declare_parameter("timeout_s", 10.0);
   this->declare_parameter("use_orientation", true);
   this->declare_parameter("action_name", pose_command_action_name_);
 
@@ -49,11 +49,18 @@ PotentialFieldActionServer::PotentialFieldActionServer()
       std::bind(&PotentialFieldActionServer::handle_cancel, this, std::placeholders::_1),
       std::bind(&PotentialFieldActionServer::handle_accepted, this, std::placeholders::_1));
   
-  default_pose_target_.position.x = 0.5;
-  default_pose_target_.position.y = 0.2;
-  default_pose_target_.position.z = 0.5;
-  //Eigen::Quaterniond quaternion_default_pose_target = Eigen::AngleAxisd(0, Eigen::Vector3d::UnitZ()) * Eigen::AngleAxisd(0, Eigen::Vector3d::UnitY()) * Eigen::AngleAxisd(0, Eigen::Vector3d::UnitX());
-  Eigen::Quaterniond quaternion_default_pose_target = Eigen::Quaterniond::Identity();
+  default_pose_target_.position.x = 0.4;
+  default_pose_target_.position.y = 0.0;
+  default_pose_target_.position.z = 0.6;
+  // Same Rz*Ry*Rx convention as execute_action(). Identity aligns tool with base (Z up);
+  // roll = π rotates +Z to −Z so the tool Z axis points straight down (world/base −Z).
+  const double default_roll = M_PI;
+  const double default_pitch = 0.0;
+  const double default_yaw = 0.0;
+  Eigen::Quaterniond quaternion_default_pose_target =
+      Eigen::AngleAxisd(default_yaw, Eigen::Vector3d::UnitZ()) *
+      Eigen::AngleAxisd(default_pitch, Eigen::Vector3d::UnitY()) *
+      Eigen::AngleAxisd(default_roll, Eigen::Vector3d::UnitX());
   default_pose_target_.orientation.w = quaternion_default_pose_target.w();
   default_pose_target_.orientation.x = quaternion_default_pose_target.x();
   default_pose_target_.orientation.y = quaternion_default_pose_target.y();
@@ -206,7 +213,6 @@ void PotentialFieldActionServer::execute_action(
     }
 
     const double elapsed = (this->now() - start_time).seconds();
-    const double elapsed_ms = (this->now() - start_time).nanoseconds()/1e6;
     pose_command_feedback_->time_elapsed = elapsed;
     RCLCPP_INFO(this->get_logger(), "Time elapsed: %f", elapsed);
     if (elapsed > timeout_s_) {
@@ -285,7 +291,7 @@ void PotentialFieldActionServer::execute_action(
     velocity_msg_.angular.x = omega[0];
     velocity_msg_.angular.y = omega[1];
     velocity_msg_.angular.z = omega[2];
-    //RCLCPP_INFO(logger_, "Velocity: %f, %f, %f", velocity_msg_.linear.x, velocity_msg_.linear.y, velocity_msg_.linear.z);
+    RCLCPP_INFO(logger_, "Velocity: %f, %f, %f", velocity_msg_.linear.x, velocity_msg_.linear.y, velocity_msg_.linear.z);
     //RCLCPP_INFO(logger_, "Angular Velocity: %f, %f, %f", velocity_msg_.angular.x, velocity_msg_.angular.y, velocity_msg_.angular.z);
     reference_twist_publisher_->publish(velocity_msg_);
 

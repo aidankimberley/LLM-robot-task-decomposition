@@ -1,0 +1,54 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 1000  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    # twist_controller:
+    #   type: picknik_twist_controller/PicknikTwistController
+
+    # robotiq_gripper_controller:
+    #   type: parallel_gripper_action_controller/GripperActionController
+
+    gripper_controller:
+      type: parallel_gripper_action_controller/GripperActionController
+
+    joint_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+joint_position_controller:
+  ros__parameters:
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+      - joint_7
+    interface_name: position
+
+#gen3_lite_2f_gripper_controller:
+gripper_controller:
+  ros__parameters:
+    default: true
+    joint: right_finger_bottom_joint
+    allow_stalling: true
+
+
+# twist_controller:
+#   ros__parameters:
+#     joint: tcp
+#     interface_names:
+#       - twist.linear.x
+#       - twist.linear.y
+#       - twist.linear.z
+#       - twist.angular.x
+#       - twist.angular.y
+#       - twist.angular.z
+
+# robotiq_gripper_controller:
+#   ros__parameters:
+#     joint: robotiq_85_left_knuckle_joint
+#     allow_stalling: true

@@ -69,8 +69,8 @@ class PotentialField2D : public rclcpp::Node {
         double done_threshold_;
 
         //Assigment 3 vars
-        std::vector<double> joint_positions_; //float64 array size 7
-
-
+        std::vector<double> joint_positions_; //float64 array, sized at runtime
+        int num_joints_;
+        double gripper_position_;
 
 };
