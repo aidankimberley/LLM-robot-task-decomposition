@@ -214,7 +214,7 @@ void PotentialFieldActionServer::execute_action(
 
     const double elapsed = (this->now() - start_time).seconds();
     pose_command_feedback_->time_elapsed = elapsed;
-    RCLCPP_INFO(this->get_logger(), "Time elapsed: %f", elapsed);
+    //RCLCPP_INFO(this->get_logger(), "Time elapsed: %f", elapsed);
     if (elapsed > timeout_s_) {
       //reference_twist_publisher_->publish(geometry_msgs::msg::Twist());//publishes zero velocity
       pose_command_response_->success = false;

@@ -220,13 +220,13 @@ def launch_setup(context, *args, **kwargs):
     )
 
     # Locates the world file inside your 'my_robot_simulation' package
- #   world_file_path = [FindPackageShare('kortex_description'), '/worlds/final.sdf']
-    # world_file_path = os.path.join(
-    #     get_package_share_directory('kortex_description'),
-    #     'worlds',
-    #     'final.sdf'
-    # )
-    # world_file_path = "/ros2_ws/src/llm_project/worlds/tabletop.sdf"
+    world_file_path = [FindPackageShare('kortex_description'), '/worlds/final.sdf']
+    world_file_path = os.path.join(
+        get_package_share_directory('kortex_description'),
+        'worlds',
+        'final.sdf'
+    )
+    world_file_path = "/ros2_ws/src/llm_project/worlds/tabletop.sdf"
 
     print(f"DEBUG: Loading world from: {world_file_path}")
     gz_launch_description = IncludeLaunchDescription(

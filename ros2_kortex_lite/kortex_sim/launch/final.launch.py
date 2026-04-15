@@ -3,12 +3,12 @@ import launch
 import launch_ros.actions 
 from launch.actions import DeclareLaunchArgument, ExecuteProcess, RegisterEventHandler
 from launch.event_handlers import OnProcessExit
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import FindExecutable, LaunchConfiguration
 from launch.substitutions import PathJoinSubstitution
 import launch.launch_description_sources
 from ament_index_python.packages import get_package_share_directory
 from launch_ros.substitutions import FindPackageShare
-
+import os
 def generate_launch_description():
     
     # Declare the argument in the parent
@@ -16,7 +16,9 @@ def generate_launch_description():
     task_arg = DeclareLaunchArgument('task', default_value='pick the cup')
     llm_python_arg = DeclareLaunchArgument(
         'llm_python',
-        default_value='/home/aidan/code-554/applied-robotics-w2026/llm_project/.venv/bin/python3.10',
+        # If you `source <venv>/bin/activate` before launching, this will resolve to the venv python.
+        default_value=os.environ.get("VIRTUAL_ENV") + "/bin/python3.10",
+        #default_value='/home/aidan/code-554/applied-robotics-w2026/llm_project/.llm_venv/bin/python3.10',
     )
 
     # main program

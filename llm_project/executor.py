@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """ROS 2 executor: JSON task steps → PoseCommand + ParallelGripperCommand."""
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ DEFAULT_POSE_ACTION = "/planner/move_pose"
 DEFAULT_GRIPPER_ACTION = "/gripper_controller/gripper_cmd"
 
 # Small pause between sequential actions (seconds).
-INTER_ACTION_SLEEP_S = 0.5
+INTER_ACTION_SLEEP_S = 3.0
 
 # Wait before doing anything (seconds).
 STARTUP_SLEEP_S = 1.0

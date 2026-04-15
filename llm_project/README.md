@@ -1,21 +1,6 @@
 # LLM Project
 
-This repository contains components for testing different LLMs and performing task decomposition tasks.
-
-## Environment Setup
-
-To run the scripts in this project, you should have Python 3.10 or create a Conda environment with this Python version, then install the required packages using the provided `setup.py`.
-
-1. **Create the Conda environment (Optional)**:
-   ```bash
-   conda create -n comp514-fp python=3.10
-   conda activate comp514-fp
-   ```
-
-2. **Install the project packages**:
-   ```bash
-   pip install -e .
-   ```
+This contains components for testing different LLMs and performing task decomposition tasks.
 
 ## Testing LLMs
 
@@ -34,23 +19,15 @@ python llm_project/llm/test_llms.py --models all --shots zero one few --output r
 python llm_project/llm/test_llms.py --models smollm2 --shots zero --tasks 0 1
 ```
 
+NOTE: To use llama you must include a hugging face access token in a .env file. lamma_token=XXXXXXX
+
 ## Testing Task Decomposition
 
-The script `test_decomposition.py` is used to generate the JSON output you will later use with the selected LLM model. You can find it at `llm_project/llm/test_decomposition.py`.
+The script `test_decomposition.py` is used to generate the JSON output to be used with the selected LLM model. You can find it at `llm_project/llm/test_decomposition.py`.
 
 To run the script:
+
 ```bash
 python llm_project/llm/test_decomposition.py --task "<instruction>"
 ```
 
-## Extra Credits World
-
-To launch the world, you must first build the package (`colcon build --packages-select llm_project`). After building, add the world path:
-```bash
-    export GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:[path_to_llm_project]/models
-    export GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:[path_to_llm_project]/worlds
-```
-And run the launch command:
-```bash
-ros2 launch llm_project gen3_tabletop.launch.py
-```
