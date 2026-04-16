@@ -103,7 +103,7 @@ def main():
     "step_3": {"action": "move_pose",    "object_a": "cube", "object_b": "cube",          "spatial_relation": "above"}
     }
     """
-    context = SYSTEM_BASE  + EXAMPLE_2 + EXAMPLE_3 +EXAMPLE_4
+    context = SYSTEM_BASE  + EXAMPLE_2 + EXAMPLE_3 +EXAMPLE_4 
     #context = SYSTEM_BASE + EXAMPLE_3 + EXAMPLE_2
     query = f"Instruction: {instruction}\nOutput JSON:"
 
