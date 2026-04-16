@@ -1,3 +1,4 @@
 .env
 .venv/
 .llm_venv/
+report.tex
