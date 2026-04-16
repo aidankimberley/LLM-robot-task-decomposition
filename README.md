@@ -2,6 +2,8 @@
 
 This repo runs a Gazebo simulation + high-level controllers, takes a natural-language task prompt, decomposes it into a JSON plan using a small LLM, and then executes the plan via ROS 2 actions.
 
+![Alt Text](short_llm_robot.gif)
+
 ### Prereqs
 
 - **ROS 2 Jazzy** installed and sourced
